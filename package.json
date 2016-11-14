@@ -1,0 +1,25 @@
+{
+  "name": "volleyball",
+  "version": "0.0.0",
+  "description": "Application for scoring a volleyball match",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/exacs/volleyball.git"
+  },
+  "keywords": [
+    "volleyball",
+    "isomorphic",
+    "react",
+    "websockets"
+  ],
+  "author": "Carlos Saito",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/exacs/volleyball/issues"
+  },
+  "homepage": "https://github.com/exacs/volleyball#readme"
+}
