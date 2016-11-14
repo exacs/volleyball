@@ -5,8 +5,12 @@
  * module
  */
 import express from 'express'
+import React from 'react'
+import { renderToString } from 'react-dom/server'
 
-function sendHTML (jsName) {
+import Hello from '../app/components/Hello'
+
+function sendHTML (rootComponent, jsName) {
   return (`
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +24,7 @@ function sendHTML (jsName) {
     <link rel="stylesheet" href="/static/build/${jsName}.css">
   </head>
   <body>
+    <div id="root">${renderToString(rootComponent)}</div>
     <script src="/static/build/${jsName}.js"></script>
   </body>
 </html>
@@ -29,7 +34,7 @@ function sendHTML (jsName) {
 const app = express()
 
 app.get('/', function (req, res) {
-  res.send(sendHTML('index'))
+  res.send(sendHTML(<Hello name='world' />, 'index'))
 })
 
 export default app
