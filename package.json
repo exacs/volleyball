@@ -1,7 +1,10 @@
 {
   "name": "volleyball",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "Application for scoring a volleyball match",
+  "engines": {
+    "node": "6.9.1"
+  },
   "main": "index.js",
   "scripts": {
     "clean": "npm run clean:client && npm run clean:server",
