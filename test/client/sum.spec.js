@@ -2,9 +2,9 @@
 import chai from 'chai'
 const expect = chai.expect
 
-import sum from 'index'
+import sum from 'sum'
 
-describe('Client index', function () {
+describe('Client sum', function () {
   describe('#sum()', function () {
     it('Should sum properly', function () {
       expect(sum(1, 1)).to.equal(2)

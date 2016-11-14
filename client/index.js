@@ -1,3 +1,4 @@
-export default function sum (a, b) {
-  return a + b
-}
+/**
+ * Entry point for Client-side JS file.
+ */
+console.log('Hello from client side JS')

@@ -4,11 +4,20 @@
   "description": "Application for scoring a volleyball match",
   "main": "index.js",
   "scripts": {
+    "clean": "npm run clean:client && npm run clean:server",
+    "clean:client": "rimraf public/build",
+    "clean:server": "rimraf build.js",
     "clean:cov": "rimraf coverage",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "NODE_ENV=production webpack --config webpack.config.client.js --progress --color --bail",
+    "build:server": "NODE_ENV=production webpack --config webpack.config.server.js --progress --color --bail",
+    "start": "NODE_ENV=production node build.js",
+    "start:dev": "NODE_ENV=development node index.dev.js",
     "test": "nyc --require babel-register --reporter=html --reporter=lcov --reporter=text-lcov npm run test:all",
     "test:all": "npm run test:client && npm run test:server",
     "test:client": "NODE_PATH=$NODE_PATH:client NODE_ENV=test mocha --require babel-register --recursive test/client",
     "test:server": "NODE_PATH=$NODE_PATH:server NODE_ENV=test mocha --require babel-register --recursive test/server",
+    "postinstall": "npm run build",
     "ci:cov": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -30,12 +39,20 @@
   "devDependencies": {
     "babel-register": "^6.18.0",
     "chai": "^3.5.0",
-    "mocha": "^3.1.2"
+    "mocha": "^3.1.2",
+    "rimraf": "^2.5.4",
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-hot-middleware": "^2.13.2"
   },
   "dependencies": {
+    "babel-loader": "^6.2.7",
     "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "chai": "^3.5.0",
     "coveralls": "^2.11.15",
+    "express": "^4.14.0",
+    "lodash": "^4.17.0",
     "nyc": "^8.4.0",
-    "rimraf": "^2.5.4"
+    "webpack": "^2.1.0-beta.26"
   }
 }
