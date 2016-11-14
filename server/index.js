@@ -6,7 +6,7 @@
  */
 import express from 'express'
 
-function sendHTML (jsUrl) {
+function sendHTML (jsName) {
   return (`
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +17,10 @@ function sendHTML (jsUrl) {
 
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>Hello World!!</title>
+    <link rel="stylesheet" href="/static/build/${jsName}.css">
   </head>
   <body>
-    <script src="/static/build/${jsUrl}.js"></script>
+    <script src="/static/build/${jsName}.js"></script>
   </body>
 </html>
   `)
