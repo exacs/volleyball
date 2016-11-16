@@ -1,0 +1,22 @@
+.score-board {
+  position: relative;
+  padding-bottom: 30px;
+
+  &--title {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &--teams {
+    display: flex;
+  }
+
+  &--team {
+    flex: 1;
+  }
+}

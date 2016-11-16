@@ -6,7 +6,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import socketio from 'socket.io-client'
 
-import Hello from '../app/components/Hello'
+import Scoreboard from '../app/components/Scoreboard'
+
 console.log('Hello from client side JS')
 
 const io = socketio()
@@ -24,4 +25,4 @@ function sendMessage () {
 
 setTimeout(sendMessage, 1000)
 
-ReactDOM.render(<Hello name='world' />, document.getElementById('root'))
+ReactDOM.render(<Scoreboard />, document.getElementById('root'))
