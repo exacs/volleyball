@@ -35,3 +35,40 @@
     font-size: 48px;
   }
 }
+
+@include media-breakpoint-up(sm) {
+  //
+  .team-score {
+    display: flex;
+
+    &__visitor {
+      flex-direction: row-reverse;
+    }
+
+    &--team {
+      flex: 1 1 auto;
+    }
+
+    &--points {
+      width: 80px;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .team-score {
+    &--team {
+      display: flex;
+      align-items: center;
+    }
+
+    &__visitor .team-score--team {
+      flex-direction: row-reverse;
+    }
+
+    &--name {
+      flex: 1 1 auto;
+      font-size: 24px;
+    }
+  }
+}
