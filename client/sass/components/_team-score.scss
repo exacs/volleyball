@@ -13,10 +13,13 @@
     display: flex;
     align-items: center;
     border-radius: 100%;
-    background: #FCC;
+    background: #C00;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 14px;
 
     &__visitor {
-      background: #CCF;
+      background: #00C;
     }
   }
 
@@ -26,7 +29,7 @@
   }
 
   &--name {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
   }
 
