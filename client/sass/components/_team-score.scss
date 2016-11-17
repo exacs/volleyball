@@ -1,6 +1,5 @@
 .team-score {
   text-align: center;
-  padding: 15px;
 
   &--title {
     display: none;
@@ -9,17 +8,15 @@
   &--avatar {
     width: 48px;
     height: 48px;
-    margin: 15px auto;
     display: flex;
     align-items: center;
-    border-radius: 100%;
-    background: #C00;
-    color: #FFF;
+    background: $brand-home-team;
+    color: $gray-lightest;
     font-weight: bold;
-    font-size: 14px;
+    font-size: $font-size-sm;
 
     &__visitor {
-      background: #00C;
+      background: $brand-away-team;
     }
   }
 
@@ -29,13 +26,13 @@
   }
 
   &--name {
-    font-size: 14px;
+    font-size: $font-size-base;
     font-weight: bold;
   }
 
   &--points {
     font-weight: bold;
-    font-size: 48px;
+    font-size: $font-size-xl;
   }
 }
 
@@ -71,7 +68,7 @@
 
     &--name {
       flex: 1 1 auto;
-      font-size: 24px;
+      font-size: $font-size-lg;
     }
   }
 }

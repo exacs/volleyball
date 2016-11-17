@@ -54,6 +54,9 @@ $brand-warning:             #f0ad4e !default;
 $brand-danger:              #d9534f !default;
 $brand-inverse:             $gray-dark !default;
 
+$brand-home-team:           #ff0070 !default;
+$brand-away-team:           #006cff !default;
+
 
 // Options
 //
@@ -172,8 +175,9 @@ $font-family-base:       $font-family-sans-serif !default;
 $font-size-root: 16px !default;
 
 $font-size-base: 1rem !default;
-$font-size-lg:   1.25rem !default;
-$font-size-sm:   .875rem !default;
+$font-size-xl:   (48/16) * 1rem !default;
+$font-size-lg:   (24/16) * 1rem !default;
+$font-size-sm:   (14/16) * 1rem !default;
 $font-size-xs:   .75rem !default;
 
 $line-height-base: 1.5 !default;

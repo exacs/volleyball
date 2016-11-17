@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react'
 
 const TeamScore = ({local = false, shortName, name, points} = {}) => (
-  <div className={`team-score ${local ? '' : 'team-score__visitor'}`}>
+  <div className={`team-score ${local ? '' : 'team-score__visitor'} p-1`}>
     <header className='team-score--team'>
       <h3 className='team-score--title'>{ local ? 'Local' : 'Visitor' }</h3>
-      <figure className={`team-score--avatar ${local ? '' : 'team-score--avatar__visitor'}`}>
+      <figure className={`team-score--avatar ${local ? '' : 'team-score--avatar__visitor'} my-1 mx-auto rounded-circle`}>
         <div className='team-score--abbr'>{ shortName }</div>
       </figure>
       <div className='team-score--name'>{ name }</div>

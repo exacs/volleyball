@@ -1,12 +1,11 @@
 .score-board {
   position: relative;
-  padding-bottom: 30px;
 
   &--title {
     position: absolute;
     bottom: 0;
     width: 100%;
-    font-size: 14px;
+    font-size: $font-size-sm;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
