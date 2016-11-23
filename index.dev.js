@@ -38,20 +38,26 @@ const config = {
   resolve: Object.assign({}, webpackBase.resolve),
 
   module: {
-    rules: webpackBase.module.rules.map(rule =>
-      rule.test === '/.js$' ? {
-        test: rule.test,
-        use: ['react-hot'].concat(rule.use),
-        exclude: rule.exclude
-      } : rule
-    )
+    rules: [
+      { test: /\.js$/, use: ['react-hot-loader/webpack', 'babel-loader'], exclude: /node_modules/ },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      }
+    ]
+
   },
 
-  plugins: webpackBase.plugins.concat([
+  plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
-  ])
+  ]
 }
 
 const compiler = webpack(config)
