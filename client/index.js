@@ -26,3 +26,5 @@ function sendMessage () {
 setTimeout(sendMessage, 1000)
 
 ReactDOM.render(<Scoreboard />, document.getElementById('root'))
+
+module.hot.accept()

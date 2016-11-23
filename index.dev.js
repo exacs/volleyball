@@ -23,7 +23,11 @@ const server = http.Server(app)
 
 const config = {
   context: path.join(__dirname, 'client'),
-  entry: mapValues(path => ['webpack-hot-middleware/client', path])(webpackClient.entry),
+  entry: mapValues(path => [
+    'webpack-hot-middleware/client',
+    'webpack/hot/dev-server',
+    path
+  ])(webpackClient.entry),
 
   output: {
     path: path.join(__dirname, 'public/build'),
@@ -33,12 +37,20 @@ const config = {
 
   resolve: Object.assign({}, webpackBase.resolve),
 
-  module: webpackBase.module,
+  module: {
+    rules: webpackBase.module.rules.map(rule =>
+      rule.test === '/.js$' ? {
+        test: rule.test,
+        use: ['react-hot'].concat(rule.use),
+        exclude: rule.exclude
+      } : rule
+    )
+  },
 
   plugins: webpackBase.plugins.concat([
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NamedModulesPlugin()
   ])
 }
 

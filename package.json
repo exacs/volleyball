@@ -15,7 +15,7 @@
     "build:client": "NODE_ENV=production webpack --config webpack.config.client.js --progress --color --bail",
     "build:server": "NODE_ENV=production webpack --config webpack.config.server.js --progress --color --bail",
     "start": "NODE_ENV=production node build.js",
-    "start:dev": "NODE_ENV=development nodemon index.dev.js --watch server --watch app",
+    "start:dev": "NODE_ENV=development nodemon index.dev.js --watch server",
     "test": "nyc --require babel-register --reporter=html --reporter=lcov --reporter=text-lcov npm run test:all",
     "test:all": "npm run test:client && npm run test:server",
     "test:client": "NODE_PATH=$NODE_PATH:client NODE_ENV=test mocha --require babel-register --recursive test/client",
@@ -50,6 +50,7 @@
     "eslint-plugin-standard": "^2.0.1",
     "mocha": "^3.1.2",
     "nodemon": "^1.11.0",
+    "react-hot-loader": "^3.0.0-beta.6",
     "rimraf": "^2.5.4",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.2"
