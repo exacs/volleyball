@@ -14,7 +14,7 @@ const TeamScore = ({local = false, shortName, name, points} = {}) => (
 )
 
 TeamScore.propTypes = {
-  local: PropTypes.boolean,
+  local: PropTypes.bool,
   shortName: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   points: PropTypes.number.isRequired
