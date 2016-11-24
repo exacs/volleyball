@@ -8,7 +8,7 @@ import express from 'express'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 
-import Scoreboard from '../app/components/Scoreboard'
+import SpectatorRoot from '../app/SpectatorRoot'
 
 function sendHTML (rootComponent, jsName) {
   return (`
@@ -34,7 +34,7 @@ function sendHTML (rootComponent, jsName) {
 const app = express()
 
 app.get('/', function (req, res) {
-  res.send(sendHTML(<Scoreboard />, 'index'))
+  res.send(sendHTML(<SpectatorRoot />, 'index'))
 })
 
 export default app
