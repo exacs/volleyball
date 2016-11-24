@@ -13,11 +13,20 @@ const teams = {
   }
 }
 
+const history = [
+  { time: 3, action: 'point', feature: 'away' },
+  { time: 4, action: 'point', feature: 'away' },
+  { time: 6, action: 'point', feature: 'home' },
+  { time: 7, action: 'point', feature: 'away' },
+  { time: 9, action: 'point', feature: 'away' }
+]
+
 const SpectatorRoot = () => (
   <div>
     <Scoreboard round={3} teams={teams} points={{ home: 1, away: 4 }} />
-    <Timeline />
+    <Timeline history={history} />
   </div>
 )
 
 export default SpectatorRoot
+
