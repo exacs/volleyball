@@ -6,12 +6,12 @@ const TimelineEntry = () => (
       <span className='timeline-entry--time'>65'</span>
     </time>
 
-    <div className='timeline-entry--label timeline-entry--label__home timeline-entry--label__active'>
+    <div className='timeline-entry--label timeline-entry--label__home__active'>
       <header className='timeline-entry--title'>Home</header>
       <main className='timeline-entry--points'>15</main>
     </div>
 
-    <div className='timeline-entry--label timeline-entry--label__away'>
+    <div className='timeline-entry--label timeline-entry--label__away__active'>
       <header className='timeline-entry--title'>Away</header>
       <main className='timeline-entry--points'>4</main>
     </div>

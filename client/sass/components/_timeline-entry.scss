@@ -21,8 +21,6 @@
 .timeline-entry--label {
   height: 32px;
   position: absolute;
-  width: 56px;
-  text-align: center;
   top: 8px;
   display: flex;
   align-items: center;
@@ -35,10 +33,26 @@
     left: 16px;
   }
 
-  &__active {
-    border: $gray-light 1px solid;
+  &__home__active {
+    right: 32px;
+  }
+
+  &__home__active::after {
+    content: '>';
+    padding: 8px;
+  }
+
+  &__away__active {
+    left: 32px;
+  }
+
+  &__away__active::before {
+    content: '<';
+    padding: 8px;
   }
 }
+
+
 
 .timeline-entry--title {
   display: none;
