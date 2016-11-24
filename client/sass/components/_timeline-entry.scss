@@ -27,17 +27,17 @@
   z-index: -1;
 
   &__home {
-    right: 16px;
+    right: 32px;
   }
   &__away {
-    left: 16px;
+    left: 32px;
   }
 
   &__home__active {
     right: 32px;
   }
 
-  &__home__active::after {
+  &__home__active::before {
     content: '>';
     padding: 8px;
   }
@@ -46,7 +46,7 @@
     left: 32px;
   }
 
-  &__away__active::before {
+  &__away__active::after {
     content: '<';
     padding: 8px;
   }
