@@ -9,6 +9,7 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 
 import SpectatorRoot from '../app/SpectatorRoot'
+import RefereeRoot from '../app/RefereeRoot'
 
 function sendHTML (rootComponent, jsName) {
   return (`
@@ -35,6 +36,10 @@ const app = express()
 
 app.get('/', function (req, res) {
   res.send(sendHTML(<SpectatorRoot />, 'index'))
+})
+
+app.get('/referee', function (req, res) {
+  res.send(sendHTML(<RefereeRoot />, 'referee'))
 })
 
 export default app

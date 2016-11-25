@@ -10,7 +10,8 @@ const base = require('./webpack.config.js')
 module.exports = {
   context: path.join(__dirname, 'client'),
   entry: {
-    index: './index'
+    index: './index',
+    referee: './referee'
   },
 
   output: {
