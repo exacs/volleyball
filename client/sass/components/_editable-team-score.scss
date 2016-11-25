@@ -5,21 +5,6 @@
     display: none;
   }
 
-  &--avatar {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    background: $brand-home-team;
-    color: $gray-lightest;
-    font-weight: bold;
-    font-size: $font-size-sm;
-
-    &__visitor {
-      background: $brand-away-team;
-    }
-  }
-
   &--abbr {
     flex: 1;
     text-align: center;
@@ -30,9 +15,26 @@
     font-weight: bold;
   }
 
+  &--form {
+    display: flex;
+  }
+
+  &--control {
+    flex: 1 1 auto;
+  }
+
+  &--button {
+    width: 40px;
+    height: 40px;
+  }
+
   &--points {
-    font-weight: bold;
-    font-size: $font-size-xl;
+    width: 80px;
+    font-size: $font-size-lg;
+  }
+
+  &__visitor &--form {
+    flex-direction: row-reverse;
   }
 }
 
@@ -41,16 +43,17 @@
   .editable-team-score {
     display: flex;
 
-    &__visitor {
-      flex-direction: row-reverse;
-    }
 
     &--team {
       flex: 1 1 auto;
     }
 
-    &--points {
-      width: 80px;
+    &--form {
+      width: 160px;
+    }
+
+    &__visitor {
+      flex-direction: row-reverse;
     }
   }
 }
