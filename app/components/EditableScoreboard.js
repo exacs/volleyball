@@ -1,15 +1,28 @@
 import React, { PropTypes } from 'react'
 import EditableTeamScore from './EditableTeamScore'
 
+function increment () {
+  console.log('increment!')
+}
+
 const EditableScoreboard = ({ round, teams, points }) => (
   <div className='score-board pb-3'>
     <h2 className='score-board--title pb-1 pt-1'>SET {round}</h2>
     <div className='score-board--teams'>
       <div className='score-board--team score-board__local'>
-        <EditableTeamScore shortName={teams.home.shortName} name={teams.home.name} points={points.home} local />
+        <EditableTeamScore
+          shortName={teams.home.shortName}
+          name={teams.home.name}
+          points={points.home}
+          onIncrement={increment}
+          local />
       </div>
       <div className='score-board--team score-board__visitor'>
-        <EditableTeamScore shortName={teams.away.shortName} name={teams.away.name} points={points.away} />
+        <EditableTeamScore
+          shortName={teams.away.shortName}
+          name={teams.away.name}
+          onIncrement={increment}
+          points={points.away} />
       </div>
     </div>
   </div>
