@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react'
 import EditableTeamScore from './EditableTeamScore'
 
-function increment () {
-  console.log('increment!')
-}
-
-const EditableScoreboard = ({ round, teams, points }) => (
+const EditableScoreboard = ({
+  round,
+  teams,
+  points,
+  incrementHome,
+  incrementAway
+}) => (
   <div className='score-board pb-3'>
     <h2 className='score-board--title pb-1 pt-1'>SET {round}</h2>
     <div className='score-board--teams'>
@@ -14,14 +16,14 @@ const EditableScoreboard = ({ round, teams, points }) => (
           shortName={teams.home.shortName}
           name={teams.home.name}
           points={points.home}
-          onIncrement={increment}
+          onIncrement={incrementHome}
           local />
       </div>
       <div className='score-board--team score-board__visitor'>
         <EditableTeamScore
           shortName={teams.away.shortName}
           name={teams.away.name}
-          onIncrement={increment}
+          onIncrement={incrementAway}
           points={points.away} />
       </div>
     </div>
@@ -42,7 +44,9 @@ EditableScoreboard.propTypes = {
   points: PropTypes.shape({
     home: PropTypes.number.isRequired,
     away: PropTypes.number.isRequired
-  })
+  }),
+  incrementHome: PropTypes.func.isRequired,
+  incrementAway: PropTypes.func.isRequired
 }
 
 export default EditableScoreboard

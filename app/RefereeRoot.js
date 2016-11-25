@@ -21,11 +21,45 @@ const history = [
   { time: 9, action: 'point', feature: 'away' }
 ]
 
-const RefereeRoot = () => (
-  <div>
-    <EditableScoreboard round={3} teams={teams} points={{ home: 1, away: 4 }} />
-    <Timeline history={history} />
-  </div>
-)
+class RefereeRoot extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.handleScoreChange = this.handleScoreChange.bind(this)
+    this.state = {
+      points: {
+        home: 1,
+        away: 4
+      }
+    }
+  }
+
+  handleScoreChange (key) {
+    return () => {
+      this.setState(prevState => ({
+        points: {
+          home: prevState.points.home + (key === 'home'),
+          away: prevState.points.away + (key === 'away')
+        }
+      }))
+    }
+  }
+
+  render () {
+    const {home, away} = this.state.points
+
+    return (
+      <div>
+        <EditableScoreboard
+          round={3}
+          teams={teams}
+          points={{home, away}}
+          incrementHome={this.handleScoreChange('home')}
+          incrementAway={this.handleScoreChange('away')} />
+        <Timeline history={history} />
+      </div>
+    )
+  }
+}
 
 export default RefereeRoot
