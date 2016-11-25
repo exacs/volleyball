@@ -1,15 +1,19 @@
 import React, { PropTypes } from 'react'
 
 const EditableTeamScore = ({local = false, shortName, name, points} = {}) => (
-  <div className={`team-score ${local ? '' : 'team-score__visitor'} p-1`}>
-    <header className='team-score--team'>
-      <h3 className='team-score--title'>{ local ? 'Local' : 'Visitor' }</h3>
-      <figure className={`team-score--avatar ${local ? '' : 'team-score--avatar__visitor'} my-1 mx-auto rounded-circle`}>
-        <div className='team-score--abbr'>{ shortName }</div>
-      </figure>
-      <div className='team-score--name'>{ name }</div>
+  <div className={`editable-team-score ${local ? '' : 'editable-team-score__visitor'} p-1`}>
+    <header className='editable-team-score--team'>
+      <h3 className='editable-team-score--title'>{ local ? 'Local' : 'Visitor' }</h3>
+      <div className='editable-team-score--name'>{ name }</div>
     </header>
-    <main className='team-score--points'>{ points }</main>
+    <main className='editable-team-score--form'>
+      <div className='editable-team-score--control'>
+        <button className='editable-team-score--button rounded-circle'>+</button>
+      </div>
+      <div className='editable-team-score--points'>
+        { points }
+      </div>
+    </main>
   </div>
 )
 

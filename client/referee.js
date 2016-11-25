@@ -1,7 +1,7 @@
 /**
  * Entry point for Client-side JS file.
  */
-import './sass/index.scss'
+import './sass/referee.scss'
 import React from 'react'
 import ReactDOM from 'react-dom'
 

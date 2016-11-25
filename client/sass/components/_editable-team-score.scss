@@ -1,0 +1,74 @@
+.editable-team-score {
+  text-align: center;
+
+  &--title {
+    display: none;
+  }
+
+  &--avatar {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    background: $brand-home-team;
+    color: $gray-lightest;
+    font-weight: bold;
+    font-size: $font-size-sm;
+
+    &__visitor {
+      background: $brand-away-team;
+    }
+  }
+
+  &--abbr {
+    flex: 1;
+    text-align: center;
+  }
+
+  &--name {
+    font-size: $font-size-base;
+    font-weight: bold;
+  }
+
+  &--points {
+    font-weight: bold;
+    font-size: $font-size-xl;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  //
+  .editable-team-score {
+    display: flex;
+
+    &__visitor {
+      flex-direction: row-reverse;
+    }
+
+    &--team {
+      flex: 1 1 auto;
+    }
+
+    &--points {
+      width: 80px;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .editable-team-score {
+    &--team {
+      display: flex;
+      align-items: center;
+    }
+
+    &__visitor .editable-team-score--team {
+      flex-direction: row-reverse;
+    }
+
+    &--name {
+      flex: 1 1 auto;
+      font-size: $font-size-lg;
+    }
+  }
+}
