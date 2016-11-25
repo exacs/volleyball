@@ -6,7 +6,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import socketio from 'socket.io-client'
 
-import Scoreboard from '../app/components/Scoreboard'
+import SpectatorRoot from '../app/SpectatorRoot'
 
 console.log('Hello from client side JS')
 
@@ -25,6 +25,6 @@ function sendMessage () {
 
 setTimeout(sendMessage, 1000)
 
-ReactDOM.render(<Scoreboard />, document.getElementById('root'))
+ReactDOM.render(<SpectatorRoot />, document.getElementById('root'))
 
 module.hot.accept()

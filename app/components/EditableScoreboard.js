@@ -1,15 +1,30 @@
 import React, { PropTypes } from 'react'
-import TeamScore from './TeamScore'
+import EditableTeamScore from './EditableTeamScore'
 
-const Scoreboard = ({ round, teams, points }) => (
+const EditableScoreboard = ({
+  round,
+  teams,
+  points,
+  incrementHome,
+  incrementAway
+}) => (
   <div className='score-board pb-3'>
     <h2 className='score-board--title pb-1 pt-1'>SET {round}</h2>
     <div className='score-board--teams'>
       <div className='score-board--team score-board__local'>
-        <TeamScore shortName={teams.home.shortName} name={teams.home.name} points={points.home} local />
+        <EditableTeamScore
+          shortName={teams.home.shortName}
+          name={teams.home.name}
+          points={points.home}
+          onIncrement={incrementHome}
+          local />
       </div>
       <div className='score-board--team score-board__visitor'>
-        <TeamScore shortName={teams.away.shortName} name={teams.away.name} points={points.away} />
+        <EditableTeamScore
+          shortName={teams.away.shortName}
+          name={teams.away.name}
+          onIncrement={incrementAway}
+          points={points.away} />
       </div>
     </div>
   </div>
@@ -20,7 +35,7 @@ const teamShape = {
   name: PropTypes.string.isRequired
 }
 
-Scoreboard.propTypes = {
+EditableScoreboard.propTypes = {
   round: PropTypes.number.isRequired,
   teams: PropTypes.shape({
     home: PropTypes.shape(teamShape),
@@ -29,7 +44,9 @@ Scoreboard.propTypes = {
   points: PropTypes.shape({
     home: PropTypes.number.isRequired,
     away: PropTypes.number.isRequired
-  })
+  }),
+  incrementHome: PropTypes.func.isRequired,
+  incrementAway: PropTypes.func.isRequired
 }
 
-export default Scoreboard
+export default EditableScoreboard

@@ -1,0 +1,77 @@
+.editable-team-score {
+  text-align: center;
+
+  &--title {
+    display: none;
+  }
+
+  &--abbr {
+    flex: 1;
+    text-align: center;
+  }
+
+  &--name {
+    font-size: $font-size-base;
+    font-weight: bold;
+  }
+
+  &--form {
+    display: flex;
+  }
+
+  &--control {
+    flex: 1 1 auto;
+  }
+
+  &--button {
+    width: 40px;
+    height: 40px;
+  }
+
+  &--points {
+    width: 80px;
+    font-size: $font-size-lg;
+  }
+
+  &__visitor &--form {
+    flex-direction: row-reverse;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  //
+  .editable-team-score {
+    display: flex;
+
+
+    &--team {
+      flex: 1 1 auto;
+    }
+
+    &--form {
+      width: 160px;
+    }
+
+    &__visitor {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .editable-team-score {
+    &--team {
+      display: flex;
+      align-items: center;
+    }
+
+    &__visitor .editable-team-score--team {
+      flex-direction: row-reverse;
+    }
+
+    &--name {
+      flex: 1 1 auto;
+      font-size: $font-size-lg;
+    }
+  }
+}

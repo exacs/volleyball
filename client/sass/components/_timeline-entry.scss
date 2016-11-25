@@ -1,0 +1,63 @@
+.timeline-entry {
+  position: relative;
+}
+
+.timeline-entry--node {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  transform: translateX(-24px);
+  align-items: center;
+  text-align: center;
+  border: 2px $gray-light solid;
+  border-radius: 50%;
+  background: #FFF;
+}
+
+.timeline-entry--time {
+  width: 100%;
+}
+
+.timeline-entry--label {
+  height: 32px;
+  position: absolute;
+  top: 8px;
+  display: flex;
+  align-items: center;
+  z-index: -1;
+
+  &__home {
+    right: 32px;
+  }
+  &__away {
+    left: 32px;
+  }
+
+  &__home__active {
+    right: 32px;
+  }
+
+  &__home__active::before {
+    content: '>';
+    padding: 8px;
+  }
+
+  &__away__active {
+    left: 32px;
+  }
+
+  &__away__active::after {
+    content: '<';
+    padding: 8px;
+  }
+}
+
+
+
+.timeline-entry--title {
+  display: none;
+}
+
+.timeline-entry--points {
+  width: 100%;
+}
