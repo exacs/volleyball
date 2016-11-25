@@ -8,7 +8,11 @@ const EditableTeamScore = ({local = false, shortName, name, points} = {}) => (
     </header>
     <main className='editable-team-score--form'>
       <div className='editable-team-score--control'>
-        <button className='editable-team-score--button rounded-circle'>+</button>
+        <button
+          onClick={ function (e) { console.log('click!!!') } }
+          className='editable-team-score--button rounded-circle'>
+          +
+        </button>
       </div>
       <div className='editable-team-score--points'>
         { points }
