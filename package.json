@@ -17,9 +17,10 @@
     "start": "NODE_ENV=production node build.js",
     "start:dev": "NODE_ENV=development nodemon index.dev.js --watch server",
     "test": "nyc --require babel-register --reporter=html --reporter=lcov --reporter=text-lcov npm run test:all",
-    "test:all": "npm run test:client && npm run test:server",
+    "test:all": "npm run test:app && npm run test:client && npm run test:server",
     "test:client": "NODE_PATH=$NODE_PATH:client NODE_ENV=test mocha --require babel-register --recursive test/client",
     "test:server": "NODE_PATH=$NODE_PATH:server NODE_ENV=test mocha --require babel-register --recursive test/server",
+    "test:app": "NODE_PATH=$NODE_PATH:app NODE_ENV=test mocha --require babel-register --recursive test/app",
     "lint": "eslint app server client",
     "postinstall": "npm run build",
     "ci:cov": "nyc report --reporter=text-lcov | coveralls"
