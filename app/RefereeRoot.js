@@ -1,6 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
 import EditableScoreboard from './components/EditableScoreboard'
 import Timeline from './components/Timeline'
+import { point } from '../app/actions'
 
 const teams = {
   home: {
@@ -13,53 +16,33 @@ const teams = {
   }
 }
 
-const history = [
-  { time: 3, action: 'point', feature: 'away' },
-  { time: 4, action: 'point', feature: 'away' },
-  { time: 6, action: 'point', feature: 'home' },
-  { time: 7, action: 'point', feature: 'away' },
-  { time: 9, action: 'point', feature: 'away' }
-]
+const RefereeRoot = ({
+  round,
+  points,
+  incrementHome,
+  incrementAway,
+  history
+}) => (
+  <div>
+    <EditableScoreboard
+      round={round}
+      teams={teams}
+      points={points}
+      incrementHome={incrementHome}
+      incrementAway={incrementAway} />
+    <Timeline history={history} />
+  </div>
+)
 
-class RefereeRoot extends React.Component {
-  constructor (props) {
-    super(props)
+const mapDispatchToProps = (dispatch) => ({
+  incrementHome: () => dispatch(point('home', Date.now())),
+  incrementAway: () => dispatch(point('away', Date.now()))
+})
 
-    this.handleScoreChange = this.handleScoreChange.bind(this)
-    this.state = {
-      points: {
-        home: 1,
-        away: 4
-      }
-    }
-  }
+const mapStateToProps = (state) => ({
+  round: 1,
+  points: state.points,
+  history: state.history
+})
 
-  handleScoreChange (key) {
-    return () => {
-      this.setState(prevState => ({
-        points: {
-          home: prevState.points.home + (key === 'home'),
-          away: prevState.points.away + (key === 'away')
-        }
-      }))
-    }
-  }
-
-  render () {
-    const {home, away} = this.state.points
-
-    return (
-      <div>
-        <EditableScoreboard
-          round={3}
-          teams={teams}
-          points={{home, away}}
-          incrementHome={this.handleScoreChange('home')}
-          incrementAway={this.handleScoreChange('away')} />
-        <Timeline history={history} />
-      </div>
-    )
-  }
-}
-
-export default RefereeRoot
+export default connect(mapStateToProps, mapDispatchToProps)(RefereeRoot)
