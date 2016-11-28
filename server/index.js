@@ -26,6 +26,8 @@ function sendHTML (rootComponent, jsName) {
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>Hello World!!</title>
     <link rel="stylesheet" href="/static/build/${jsName}.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
   </head>
   <body>
     <div id="root">${renderToString(rootComponent)}</div>
