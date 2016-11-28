@@ -12,12 +12,12 @@ const EditableTeamScore = ({
       <h3 className='editable-team-score--title'>{ local ? 'Local' : 'Visitor' }</h3>
       <div className='editable-team-score--name'>{ name }</div>
     </header>
-    <main className='editable-team-score--form'>
+    <main className='editable-team-score--form py-1'>
       <div className='editable-team-score--control'>
         <button
           onClick={ function (e) { onIncrement() } }
-          className='editable-team-score--button rounded-circle'>
-          +
+          className='editable-team-score--button rounded-circle btn btn-primary p-0'>
+          <i className='material-icons editable-team-score--button-icon'>add</i>
         </button>
       </div>
       <div className='editable-team-score--points'>
