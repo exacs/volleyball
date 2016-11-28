@@ -28,27 +28,12 @@
 
   &__home {
     right: 32px;
+    flex-direction: row;
   }
+
   &__away {
     left: 32px;
-  }
-
-  &__home__active {
-    right: 32px;
-  }
-
-  &__home__active::before {
-    content: '>';
-    padding: 8px;
-  }
-
-  &__away__active {
-    left: 32px;
-  }
-
-  &__away__active::after {
-    content: '<';
-    padding: 8px;
+    flex-direction: row-reverse;
   }
 }
 
