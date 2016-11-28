@@ -1,9 +1,12 @@
 .score-board {
   position: relative;
+  background: $gray-dark;
+  color: $gray-lightest;
 
   &--title {
     position: absolute;
     bottom: 0;
+    left: 0;
     width: 100%;
     font-size: $font-size-sm;
     font-weight: bold;
@@ -13,6 +16,7 @@
 
   &--teams {
     display: flex;
+    border-bottom: 1px $gray-light solid;
   }
 
   &--team {

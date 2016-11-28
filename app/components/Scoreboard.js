@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react'
 import TeamScore from './TeamScore'
 
 const Scoreboard = ({ round, teams, points }) => (
-  <div className='score-board pb-3'>
-    <h2 className='score-board--title pb-1 pt-1'>SET {round}</h2>
+  <div className='score-board pb-3 px-1'>
+    <h2 className='score-board--title py-1 m-0'>SET {round}</h2>
     <div className='score-board--teams'>
       <div className='score-board--team score-board__local'>
         <TeamScore shortName={teams.home.shortName} name={teams.home.name} points={points.home} local />
