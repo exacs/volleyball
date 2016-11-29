@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import EditableScoreboard from './components/EditableScoreboard'
 import UndoableTimeline from './components/UndoableTimeline'
-import { point, undo } from '../app/actions'
+import { emitPoint, emitUndo } from '../app/actions/io'
 
 const teams = {
   home: {
@@ -36,9 +36,9 @@ const RefereeRoot = ({
 )
 
 const mapDispatchToProps = (dispatch) => ({
-  incrementHome: () => dispatch(point('home', Date.now())),
-  incrementAway: () => dispatch(point('away', Date.now())),
-  undo: () => dispatch(undo())
+  incrementHome: () => dispatch(emitPoint('home', Date.now())),
+  incrementAway: () => dispatch(emitPoint('away', Date.now())),
+  undo: () => dispatch(emitUndo())
 })
 
 const mapStateToProps = (state) => ({
