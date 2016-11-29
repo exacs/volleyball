@@ -14,7 +14,7 @@ import SpectatorRoot from '../app/SpectatorRoot'
 import RefereeRoot from '../app/RefereeRoot'
 import reducer from '../app/reducers'
 
-function sendHTML (rootComponent, jsName) {
+function sendHTML (rootComponent, jsName, state) {
   return (`
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +31,7 @@ function sendHTML (rootComponent, jsName) {
   </head>
   <body>
     <div id="root">${renderToString(rootComponent)}</div>
+    <script>window.__INITIAL_STATE__ = ${JSON.stringify(state)}</script>
     <script src="/static/build/${jsName}.js"></script>
   </body>
 </html>
@@ -49,7 +50,7 @@ const store = createStore(reducer, preloadedState)
 const app = express()
 
 app.get('/', function (req, res) {
-  res.send(sendHTML(<SpectatorRoot />, 'index'))
+  res.send(sendHTML(<SpectatorRoot />, 'index', preloadedState))
 })
 
 app.get('/referee', function (req, res) {
@@ -57,8 +58,9 @@ app.get('/referee', function (req, res) {
     <Provider store={store}>
       <RefereeRoot />
     </Provider>,
-    'referee')
-  )
+    'referee',
+    preloadedState
+  ))
 })
 
 export default app
