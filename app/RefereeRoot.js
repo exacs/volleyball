@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import EditableScoreboard from './components/EditableScoreboard'
-import Timeline from './components/Timeline'
-import { point } from '../app/actions'
+import UndoableTimeline from './components/UndoableTimeline'
+import { point, undo } from '../app/actions'
 
 const teams = {
   home: {
@@ -21,7 +21,8 @@ const RefereeRoot = ({
   points,
   incrementHome,
   incrementAway,
-  history
+  history,
+  undo
 }) => (
   <div>
     <EditableScoreboard
@@ -30,13 +31,14 @@ const RefereeRoot = ({
       points={points}
       incrementHome={incrementHome}
       incrementAway={incrementAway} />
-    <Timeline history={history} />
+    <UndoableTimeline history={history} undo={undo} />
   </div>
 )
 
 const mapDispatchToProps = (dispatch) => ({
   incrementHome: () => dispatch(point('home', Date.now())),
-  incrementAway: () => dispatch(point('away', Date.now()))
+  incrementAway: () => dispatch(point('away', Date.now())),
+  undo: () => dispatch(undo())
 })
 
 const mapStateToProps = (state) => ({
