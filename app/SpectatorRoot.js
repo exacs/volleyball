@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
 import Scoreboard from './components/Scoreboard'
 import Timeline from './components/Timeline'
 
@@ -13,20 +15,21 @@ const teams = {
   }
 }
 
-const history = [
-  { time: 3, action: 'point', feature: 'away' },
-  { time: 4, action: 'point', feature: 'away' },
-  { time: 6, action: 'point', feature: 'home' },
-  { time: 7, action: 'point', feature: 'away' },
-  { time: 9, action: 'point', feature: 'away' }
-]
-
-const SpectatorRoot = () => (
+const SpectatorRoot = ({
+  round,
+  points,
+  history
+}) => (
   <div>
-    <Scoreboard round={3} teams={teams} points={{ home: 1, away: 4 }} />
+    <Scoreboard round={round} teams={teams} points={points} />
     <Timeline history={history} />
   </div>
 )
 
-export default SpectatorRoot
+const mapStateToProps = (state) => ({
+  round: 1,
+  points: state.points,
+  history: state.history
+})
 
+export default connect(mapStateToProps)(SpectatorRoot)
