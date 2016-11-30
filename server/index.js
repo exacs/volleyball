@@ -10,6 +10,8 @@ import { renderToString } from 'react-dom/server'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
+import * as data from './data'
+
 import SpectatorRoot from '../app/SpectatorRoot'
 import RefereeRoot from '../app/RefereeRoot'
 import reducer from '../app/reducers'
@@ -43,23 +45,14 @@ function sendHTML (rootComponent, jsName, state) {
   `)
 }
 
-const preloadedState = {
-  points: {
-    home: 0,
-    away: 0
-  },
-  history: []
-}
-
-const store = createStore(reducer, preloadedState)
 const app = express()
 
 app.get('/', function (req, res) {
-  res.send(sendHTML(<SpectatorRoot />, 'index', preloadedState))
+  res.send(sendHTML(<SpectatorRoot />, 'index', data.getMatch()))
 })
 
 app.get('/referee', function (req, res) {
-  res.send(sendHTML(<RefereeRoot />, 'referee', preloadedState))
+  res.send(sendHTML(<RefereeRoot />, 'referee', data.getMatch()))
 })
 
 export default app
