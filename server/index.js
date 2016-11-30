@@ -15,6 +15,11 @@ import RefereeRoot from '../app/RefereeRoot'
 import reducer from '../app/reducers'
 
 function sendHTML (rootComponent, jsName, state) {
+  const provider = (
+    <Provider store={createStore(reducer, state)}>
+      {rootComponent}
+    </Provider>
+  )
   return (`
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +35,7 @@ function sendHTML (rootComponent, jsName, state) {
           rel="stylesheet">
   </head>
   <body>
-    <div id="root">${renderToString(rootComponent)}</div>
+    <div id="root">${renderToString(provider)}</div>
     <script>window.__INITIAL_STATE__ = ${JSON.stringify(state)}</script>
     <script src="/static/build/${jsName}.js"></script>
   </body>
@@ -54,13 +59,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/referee', function (req, res) {
-  res.send(sendHTML(
-    <Provider store={store}>
-      <RefereeRoot />
-    </Provider>,
-    'referee',
-    preloadedState
-  ))
+  res.send(sendHTML(<RefereeRoot />, 'referee', preloadedState))
 })
 
 export default app
