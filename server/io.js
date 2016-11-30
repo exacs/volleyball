@@ -11,9 +11,9 @@ export default function (app) {
   io.on('connection', function (socket) {
     console.log('connection')
 
-    socket.on('message', function (text) {
-      console.log('message received', text)
-      io.emit('message', text)
+    socket.on('referee_update', function (text) {
+      console.log('referee_update', text)
+      io.emit('spectator_update', text)
     })
   })
 }

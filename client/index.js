@@ -18,8 +18,8 @@ io.on('connect', function () {
   console.log('client connect')
 })
 
-io.on('message', function (text) {
-  console.log('message received', text)
+io.on('spectator_update', function (text) {
+  console.log('update for spectator', text)
 })
 
 function sendMessage () {
