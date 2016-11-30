@@ -20,6 +20,7 @@ io.on('connect', function () {
 
 io.on('spectator_update', function (text) {
   console.log('update for spectator', text)
+  store.dispatch(text)
 })
 
 function sendMessage () {
