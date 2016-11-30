@@ -5,7 +5,7 @@
  */
 import socketio from 'socket.io'
 
-export default function (app) {
+export default (app, store) => {
   const io = socketio(app)
 
   io.on('connection', function (socket) {
@@ -13,6 +13,7 @@ export default function (app) {
 
     socket.on('referee_update', function (text) {
       console.log('referee_update', text)
+      store.dispatch(text)
       io.emit('spectator_update', text)
     })
   })

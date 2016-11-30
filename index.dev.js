@@ -17,6 +17,7 @@ const express = require('express')
 const path = require('path')
 const app = require('./server').default
 const socketio = require('./server/io').default
+const data = require('./server/data')
 
 const PORT = process.env.PORT || 3000
 const server = http.Server(app)
@@ -79,4 +80,4 @@ server.listen(PORT, function () {
   console.log('Listening to port ', PORT)
 })
 
-socketio(server)
+socketio(server, data)
