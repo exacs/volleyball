@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import EditableScoreboard from './components/EditableScoreboard'
-import UndoableTimeline from './components/UndoableTimeline'
+import UndoableTimeline from './components/UndoableTimeline_refactored'
 import { emitPoint, emitUndo } from '../app/actions/io'
 
 const teams = {
