@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import Scoreboard from './components/Scoreboard'
-import Timeline from './components/UndoableTimeline_refactored'
+import Timeline from './components/Timeline'
 
 const teams = {
   home: {

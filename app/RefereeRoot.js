@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import EditableScoreboard from './components/EditableScoreboard'
-import UndoableTimeline from './components/UndoableTimeline_refactored'
+import Timeline from './components/Timeline'
 import { emitPoint, emitUndo } from '../app/actions/io'
 
 const teams = {
@@ -31,7 +31,7 @@ const RefereeRoot = ({
       points={points}
       incrementHome={incrementHome}
       incrementAway={incrementAway} />
-    <UndoableTimeline history={history} undo={undo} />
+    <Timeline history={history} undo={undo} />
   </div>
 )
 

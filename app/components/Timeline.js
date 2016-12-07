@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import TimelineEntry from './UndoableTimelineEntry_refactored'
+import TimelineEntry from './TimelineEntry'
 
 function eventsToStates (events) {
   const states = []
