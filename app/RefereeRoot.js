@@ -16,24 +16,23 @@ const teams = {
   }
 }
 
-const RefereeRoot = ({
-  round,
-  points,
-  incrementHome,
-  incrementAway,
-  history,
-  undo
-}) => (
-  <div>
-    <EditableScoreboard
-      round={round}
-      teams={teams}
-      points={points}
-      incrementHome={incrementHome}
-      incrementAway={incrementAway} />
-    <Timeline history={history} undo={undo} />
-  </div>
-)
+class RefereeRoot extends React.Component {
+  render () {
+    return (
+      <div>
+        <EditableScoreboard
+          round={this.props.round}
+          teams={teams}
+          points={this.props.points}
+          incrementHome={this.props.incrementHome}
+          incrementAway={this.props.incrementAway} />
+        <Timeline
+          history={this.props.history}
+          undo={this.props.undo} />
+      </div>
+    )
+  }
+}
 
 const mapDispatchToProps = (dispatch) => ({
   incrementHome: () => dispatch(emitPoint('home', Date.now())),
