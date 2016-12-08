@@ -21,25 +21,26 @@ function eventsToStates (events) {
   return states
 }
 
-const Item = ({item, undo}) => (
+const Item = ({item, undo, inverted}) => (
   <li className='timeline--item'>
     <TimelineEntry
       undo={undo}
       time={item.time}
       points={item.points}
-      home={item.home} />
+      home={item.home}
+      inverted={inverted} />
   </li>
 )
 
-const UndoableTimeline = ({history, undo}) => {
+const UndoableTimeline = ({history, undo, inverted = false}) => {
   const states = eventsToStates(history).reverse()
   const first = states[0]
 
   return (
     <div className='timeline'>
       <ul className='timeline--list'>
-        { first && <Item item={first} undo={undo} /> }
-        { states.slice(1).map(state => <Item item={state} />) }
+        { first && <Item item={first} undo={undo} inverted={inverted} /> }
+        { states.slice(1).map(state => <Item item={state} inverted={inverted} />) }
       </ul>
     </div>
   )
@@ -50,7 +51,8 @@ UndoableTimeline.propTypes = {
     action: PropTypes.oneOf(['point']),
     feature: PropTypes.oneOf(['home', 'away'])
   })),
-  undo: PropTypes.func
+  undo: PropTypes.func,
+  inverted: PropTypes.bool
 }
 
 export default UndoableTimeline
