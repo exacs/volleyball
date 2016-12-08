@@ -7,6 +7,7 @@ import { point, undo } from 'actions/index'
 
 describe('Main reducer', function () {
   const oldState = {
+    winner: null,
     rounds: {
       home: 0,
       away: 0
@@ -44,6 +45,7 @@ describe('Main reducer', function () {
 
     describe('when home points and score was 24-20', function () {
       const oldState = {
+        winner: null,
         rounds: {
           home: 0,
           away: 0
@@ -79,6 +81,7 @@ describe('Main reducer', function () {
 
   describe('when home points and score was 24-24', function () {
     const oldState = {
+      winner: null,
       rounds: {
         home: 0,
         away: 0
@@ -109,6 +112,7 @@ describe('Main reducer', function () {
 
   describe('when home points and score was 80-80', function () {
     const oldState = {
+      winner: null,
       rounds: {
         home: 0,
         away: 0
@@ -139,6 +143,7 @@ describe('Main reducer', function () {
 
   describe('when home points and score was 25-24', function () {
     const oldState = {
+      winner: null,
       rounds: {
         home: 0,
         away: 0
@@ -177,6 +182,72 @@ describe('Main reducer', function () {
           },
           history: []
         })
+    })
+  })
+
+  describe('when home achieves the last point', function () {
+    const oldState = {
+      winner: null,
+      rounds: {
+        home: 2,
+        away: 0
+      },
+      points: {
+        home: 24,
+        away: 20
+      },
+      history: []
+    }
+
+    const newState = reduce(oldState, point('home'))
+
+    it('should mark "home" as winner', function () {
+      expect(newState.winner).to.equal('home')
+    })
+
+    it('should mark "3-0" as the rounds result', function () {
+      expect(newState.rounds).to.deep.equal({
+        home: 3,
+        away: 0
+      })
+    })
+
+    it('should not allow new points', function () {
+      expect(reduce(newState, point('home')))
+        .to.equal(newState)
+    })
+  })
+
+  describe('when home achieves the 15th point in the 5th round', function () {
+    const oldState = {
+      winner: null,
+      rounds: {
+        home: 2,
+        away: 2
+      },
+      points: {
+        home: 14,
+        away: 10
+      },
+      history: []
+    }
+
+    const newState = reduce(oldState, point('home'))
+
+    it('should mark "home" as winner', function () {
+      expect(newState.winner).to.equal('home')
+    })
+
+    it('should mark "3-2" as the rounds result', function () {
+      expect(newState.rounds).to.deep.equal({
+        home: 3,
+        away: 2
+      })
+    })
+
+    it('should not allow new points', function () {
+      expect(reduce(newState, point('home')))
+        .to.equal(newState)
     })
   })
 })
