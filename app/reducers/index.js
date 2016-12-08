@@ -8,7 +8,8 @@ function reducer (state, action) {
       return winMatch(winRound(pointReducer(state, action)))
     case ActionTypes.UNDO:
       return Object.assign(
-        { history: state.history },
+        {},
+        state,
         undoReducer(state, action)
       )
     default:
