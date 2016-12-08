@@ -5,8 +5,23 @@
  * module
  */
 import express from 'express'
+import React from 'react'
+import { renderToString } from 'react-dom/server'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
-function sendHTML (jsUrl) {
+import * as data from './data'
+
+import SpectatorRoot from '../app/SpectatorRoot'
+import RefereeRoot from '../app/RefereeRoot'
+import reducer from '../app/reducers'
+
+function sendHTML (rootComponent, jsName, state) {
+  const provider = (
+    <Provider store={createStore(reducer, state)}>
+      {rootComponent}
+    </Provider>
+  )
   return (`
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +32,14 @@ function sendHTML (jsUrl) {
 
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <title>Hello World!!</title>
+    <link rel="stylesheet" href="/static/build/${jsName}.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
   </head>
   <body>
-    <script src="/static/build/${jsUrl}.js"></script>
+    <div id="root">${renderToString(provider)}</div>
+    <script>window.__INITIAL_STATE__ = ${JSON.stringify(state)}</script>
+    <script src="/static/build/${jsName}.js"></script>
   </body>
 </html>
   `)
@@ -28,7 +48,11 @@ function sendHTML (jsUrl) {
 const app = express()
 
 app.get('/', function (req, res) {
-  res.send(sendHTML('index'))
+  res.send(sendHTML(<SpectatorRoot />, 'index', data.getMatch()))
+})
+
+app.get('/referee', function (req, res) {
+  res.send(sendHTML(<RefereeRoot />, 'referee', data.getMatch()))
 })
 
 export default app

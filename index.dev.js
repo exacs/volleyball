@@ -16,13 +16,19 @@ const http = require('http')
 const express = require('express')
 const path = require('path')
 const app = require('./server').default
+const socketio = require('./server/io').default
+const data = require('./server/data')
 
 const PORT = process.env.PORT || 3000
 const server = http.Server(app)
 
 const config = {
   context: path.join(__dirname, 'client'),
-  entry: mapValues(path => ['webpack-hot-middleware/client', path])(webpackClient.entry),
+  entry: mapValues(path => [
+    'webpack-hot-middleware/client',
+    'webpack/hot/dev-server',
+    path
+  ])(webpackClient.entry),
 
   output: {
     path: path.join(__dirname, 'public/build'),
@@ -32,13 +38,27 @@ const config = {
 
   resolve: Object.assign({}, webpackBase.resolve),
 
-  module: webpackBase.module,
+  module: {
+    rules: [
+      { test: /\.js$/, use: ['react-hot-loader/webpack', 'babel-loader'], exclude: /node_modules/ },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
+      }
+    ]
 
-  plugins: webpackBase.plugins.concat([
+  },
+
+  plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ])
+    new webpack.NamedModulesPlugin()
+  ]
 }
 
 const compiler = webpack(config)
@@ -59,3 +79,5 @@ app.use('/static', express.static('public'))
 server.listen(PORT, function () {
   console.log('Listening to port ', PORT)
 })
+
+socketio(server, data)

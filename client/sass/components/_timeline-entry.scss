@@ -1,0 +1,48 @@
+.timeline-entry {
+  position: relative;
+}
+
+.timeline-entry--node {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  transform: translateX(-20px);
+  align-items: center;
+  text-align: center;
+  border: 2px $gray-light solid;
+  border-radius: 50%;
+  background: #FFF;
+}
+
+.timeline-entry--time {
+  font-size: $font-size-sm;
+  width: 100%;
+}
+
+.timeline-entry--label {
+  height: 32px;
+  position: absolute;
+  top: 4px;
+  display: flex;
+  align-items: center;
+
+  &__home {
+    right: 32px;
+    flex-direction: row;
+  }
+
+  &__away {
+    left: 32px;
+    flex-direction: row-reverse;
+  }
+}
+
+
+
+.timeline-entry--title {
+  display: none;
+}
+
+.timeline-entry--points {
+  width: 100%;
+}

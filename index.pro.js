@@ -6,6 +6,8 @@
 import http from 'http'
 import express from 'express'
 import app from './server'
+import socketio from './server/io'
+import * as data from './server/data'
 
 const PORT = process.env.PORT || 3000
 const server = http.Server(app)
@@ -15,3 +17,5 @@ app.use('/static', express.static('public'))
 server.listen(PORT, function () {
   console.log('Listening to port ', PORT)
 })
+
+socketio(server, data)
