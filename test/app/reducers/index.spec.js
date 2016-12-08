@@ -6,25 +6,37 @@ import reduce from 'reducers/index'
 import { point, undo } from 'actions/index'
 
 describe('Main reducer', function () {
-  const oldState = {
-    winner: null,
-    rounds: {
-      home: 0,
-      away: 0
-    },
-    points: {
-      home: 0,
-      away: 0
-    },
-    history: [{ time: 1, action: 'point', feature: 'home' }]
-  }
   describe('with XXXX action.type', function () {
+    const oldState = {
+      winner: null,
+      rounds: {
+        home: 0,
+        away: 0
+      },
+      points: {
+        home: 0,
+        away: 0
+      },
+      history: [{ time: 1, action: 'point', feature: 'home' }]
+    }
     it('should not change the reference of the state', function () {
       expect(reduce(oldState, { type: 'XXXX' })).to.equal(oldState)
     })
   })
 
   describe('with POINT action.type', function () {
+    const oldState = {
+      winner: null,
+      rounds: {
+        home: 0,
+        away: 0
+      },
+      points: {
+        home: 0,
+        away: 0
+      },
+      history: [{ time: 1, action: 'point', feature: 'home' }]
+    }
     it('should POINT home properly', function () {
       expect(reduce(oldState, point('home')).points)
         .to.deep.equal({ home: 1, away: 0 })
@@ -173,15 +185,53 @@ describe('Main reducer', function () {
   })
 
   describe('with UNDO action.type', function () {
-    it('Should UNDO', function () {
-      expect(reduce(oldState, undo()))
-        .to.deep.equal({
-          points: {
-            home: -1,
-            away: 0
-          },
-          history: []
-        })
+    const oldState = {
+      winner: null,
+      rounds: {
+        home: 0,
+        away: 0
+      },
+      points: {
+        home: 0,
+        away: 0
+      },
+      history: [
+        { time: 0, action: 'point', feature: 'home' },
+        { time: 1, action: 'point', feature: 'home' }
+      ]
+    }
+
+    const newState = reduce(oldState, undo())
+    const newState2 = reduce(newState, undo())
+
+    it('should UNDO', function () {
+      expect(newState).to.deep.equal({
+        winner: null,
+        rounds: {
+          home: 0,
+          away: 0
+        },
+        points: {
+          home: -1,
+          away: 0
+        },
+        history: [{ time: 0, action: 'point', feature: 'home' }]
+      })
+    })
+
+    it('should UNDO again', function () {
+      expect(newState2).to.deep.equal({
+        winner: null,
+        rounds: {
+          home: 0,
+          away: 0
+        },
+        points: {
+          home: -2,
+          away: 0
+        },
+        history: []
+      })
     })
   })
 
