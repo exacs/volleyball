@@ -7,6 +7,10 @@ import { createStore } from 'redux'
 import reducer from '../app/reducers'
 
 const match = {
+  rounds: {
+    home: 0,
+    away: 0
+  },
   points: {
     home: 0,
     away: 0
