@@ -1,9 +1,11 @@
 import * as ActionTypes from '../actions'
 
 function reducer (state, action) {
+  if (state.winner !== null) return state
+
   switch (action.type) {
     case ActionTypes.POINT:
-      return pointReducer(state, action)
+      return winMatch(winRound(pointReducer(state, action)))
     case ActionTypes.UNDO:
       return Object.assign(
         { history: state.history },
@@ -14,10 +16,22 @@ function reducer (state, action) {
   }
 }
 
+function winMatch (state) {
+  if (state.rounds.home >= 3 || state.rounds.away >= 3) {
+    return Object.assign({}, state,
+      { winner: state.rounds.home >= 3 ? 'home' : 'away' }
+    )
+  } else {
+    return state
+  }
+}
+
 function winRound (state) {
+  const max = state.rounds.home + state.rounds.away === 4 ? 15 : 25
   const diff = Math.abs(state.points.home - state.points.away)
-  if (diff >= 2 && (state.points.home >= 25 || state.points.away >= 25)) {
+  if (diff >= 2 && (state.points.home >= max || state.points.away >= max)) {
     return {
+      winner: state.winner,
       points: {
         home: 0,
         away: 0
@@ -34,7 +48,8 @@ function winRound (state) {
 }
 
 function pointReducer (state, action) {
-  return winRound({
+  return {
+    winner: state.winner,
     rounds: state.rounds,
     points: {
       home: state.points.home + (action.feature === 'home'),
@@ -45,7 +60,7 @@ function pointReducer (state, action) {
       action: 'point',
       feature: action.feature
     })
-  })
+  }
 }
 
 function undoReducer (state) {
