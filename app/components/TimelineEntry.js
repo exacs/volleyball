@@ -12,20 +12,20 @@ const ArrowIcon = ({home}) => (
   </i>
 )
 
-const UndoableTimelineEntry = ({home = false, time, points, undo}) => (
+const UndoableTimelineEntry = ({home = false, time, points, undo, inverted = false}) => (
   <div className='timeline-entry'>
     <time className='timeline-entry--node'>
       <span className='timeline-entry--time'>{ 'X\'' }</span>
     </time>
 
-    <div className='timeline-entry--label timeline-entry--label__home'>
+    <div className={`timeline-entry--label timeline-entry--label__${!inverted ? 'home' : 'away'}`}>
       { undo && home && <Undo undo={undo} /> }
       { home && <ArrowIcon home={true} /> }
       <header className='timeline-entry--title'>Home</header>
       <main className='timeline-entry--points'>{ points.home }</main>
     </div>
 
-    <div className='timeline-entry--label timeline-entry--label__away'>
+    <div className={`timeline-entry--label timeline-entry--label__${!inverted ? 'away' : 'home'}`}>
       { undo && !home && <Undo undo={undo} /> }
       { !home && <ArrowIcon home={false} /> }
       <header className='timeline-entry--title'>Away</header>
@@ -41,7 +41,8 @@ UndoableTimelineEntry.propTypes = {
     home: PropTypes.number.isRequired,
     away: PropTypes.number.isRequired
   }),
-  undo: PropTypes.func
+  undo: PropTypes.func,
+  inverted: PropTypes.bool
 }
 
 export default UndoableTimelineEntry

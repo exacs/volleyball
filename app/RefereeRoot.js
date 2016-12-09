@@ -16,24 +16,50 @@ const teams = {
   }
 }
 
-const RefereeRoot = ({
-  round,
-  points,
-  incrementHome,
-  incrementAway,
-  history,
-  undo
-}) => (
-  <div>
-    <EditableScoreboard
-      round={round}
-      teams={teams}
-      points={points}
-      incrementHome={incrementHome}
-      incrementAway={incrementAway} />
-    <Timeline history={history} undo={undo} />
-  </div>
-)
+class RefereeRoot extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      inverted: false
+    }
+
+    this.handleInvert = this.handleInvert.bind(this)
+  }
+
+  handleInvert () {
+    this.setState(prevState => ({
+      inverted: !prevState.inverted
+    }))
+  }
+
+  render () {
+    return (
+      <div>
+        <section className='referee--scoreboard'>
+          <EditableScoreboard
+            round={this.props.round}
+            teams={teams}
+            points={this.props.points}
+            incrementHome={this.props.incrementHome}
+            incrementAway={this.props.incrementAway}
+            inverted={this.state.inverted} />
+          <footer className='referee--footer'>
+            <button className='referee--change-sides btn-link' onClick={this.handleInvert}>
+              <i className='material-icons'>swap_horiz</i>
+            </button>
+          </footer>
+        </section>
+        <section>
+          <Timeline
+            history={this.props.history}
+            undo={this.props.undo}
+            inverted={this.state.inverted} />
+        </section>
+      </div>
+    )
+  }
+}
 
 const mapDispatchToProps = (dispatch) => ({
   incrementHome: () => dispatch(emitPoint('home', Date.now())),

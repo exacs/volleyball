@@ -19,6 +19,10 @@
     border-bottom: 1px $gray-light solid;
   }
 
+  &--teams__inverted {
+    flex-direction: row-reverse;
+  }
+
   &--team {
     flex: 1;
   }
