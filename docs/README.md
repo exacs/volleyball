@@ -12,13 +12,3 @@
   * [JSX](/docs/ui/Jsx.md)
   * [Bloque__Elemento--Modificador](/docs/ui/BlockElementModifier.md)
   * [Componentes](/docs/ui/Components.md)
-
-
-  * [Estado de la aplicación](/docs/introduction/State.md)
-  * [Capas de datos](/docs/introduction/DataLayer.md)
-  * [Capas de interfaz](/docs/introduction/InterfaceLayer.md)
-  * [Capa de presentación](/docs/introduction/PresentationLayer.md)
-* [API](/docs/api/README.md)
-  * [Componentes presentacionales](/docs/api/Components.md)
-  * ~~[Reducer](/docs/api/Reducers.md)~~
-  * ~~[Middlewares](/docs/api/Middlewares.md)~~
