@@ -48,11 +48,11 @@ function sendHTML (rootComponent, jsName, state) {
 const app = express()
 
 app.get('/', function (req, res) {
-  res.send(sendHTML(<SpectatorRoot />, 'index', data.getMatch()))
+  res.send(sendHTML(<SpectatorRoot />, 'index', data.getState()))
 })
 
 app.get('/referee', function (req, res) {
-  res.send(sendHTML(<RefereeRoot />, 'referee', data.getMatch()))
+  res.send(sendHTML(<RefereeRoot />, 'referee', data.getState()))
 })
 
 export default app
