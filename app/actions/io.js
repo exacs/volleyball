@@ -1,3 +1,8 @@
+/**
+ * Redux Asynchronous actions related to WebSocket
+ *
+ * The Store needs to have the IO Middleware inside to work
+ */
 import { POINT, UNDO } from './index'
 import { EMIT_IO } from '../middleware/io'
 

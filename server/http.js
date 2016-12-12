@@ -1,8 +1,5 @@
 /**
- * Entry point for Back-end side JS file.
- *
- * Must export an instance of Express or a function to be passed to NodeJS http
- * module
+ * HTTP Server
  */
 import express from 'express'
 import React from 'react'
@@ -10,11 +7,30 @@ import { renderToString } from 'react-dom/server'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-import * as data from './data'
-
 import SpectatorRoot from '../app/SpectatorRoot'
 import RefereeRoot from '../app/RefereeRoot'
 import reducer from '../app/reducers'
+
+/**
+ * Return an instance of Express HTTP Server.
+ *
+ * @param data   - Redux store of the server-side data
+ */
+export default function (data) {
+  const app = express()
+
+  app.get('/', function (req, res) {
+    res.send(sendHTML(<SpectatorRoot />, 'index', data.getState()))
+  })
+
+  app.get('/referee', function (req, res) {
+    res.send(sendHTML(<RefereeRoot />, 'referee', data.getState()))
+  })
+
+  app.use('/static', express.static('../public'))
+
+  return app
+}
 
 function sendHTML (rootComponent, jsName, state) {
   const provider = (
@@ -45,14 +61,3 @@ function sendHTML (rootComponent, jsName, state) {
   `)
 }
 
-const app = express()
-
-app.get('/', function (req, res) {
-  res.send(sendHTML(<SpectatorRoot />, 'index', data.getMatch()))
-})
-
-app.get('/referee', function (req, res) {
-  res.send(sendHTML(<RefereeRoot />, 'referee', data.getMatch()))
-})
-
-export default app

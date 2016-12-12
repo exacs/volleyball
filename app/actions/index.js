@@ -1,3 +1,6 @@
+/**
+ * Redux actions
+ */
 export const POINT = 'point'
 export const UNDO = 'undo'
 

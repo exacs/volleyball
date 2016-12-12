@@ -19,7 +19,4 @@ const match = {
   history: []
 }
 
-const store = createStore(reducer, match)
-
-export const dispatch = (action) => store.dispatch(action)
-export const getMatch = () => store.getState()
+export default createStore(reducer, match)

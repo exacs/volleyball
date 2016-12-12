@@ -1,10 +1,14 @@
 /**
- * Entry point for the Backend side of Socket.io.
- *
- * Must export a function that accepts an app.
+ * WebSocket server
  */
 import socketio from 'socket.io'
 
+/**
+ * Return an instance of Socket.io WebSocket Server.
+ *
+ * @param app   - An HTTP server
+ * @param store - Redux store of the server-side data
+ */
 export default (app, store) => {
   const io = socketio(app)
 

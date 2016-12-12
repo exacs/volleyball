@@ -1,9 +1,6 @@
 /**
  * Script to start the Server in Development mode.
- *
- * Do not use in Production
  */
-
 require('babel-register')
 const webpack = require('webpack')
 const webpackDev = require('webpack-dev-middleware')
@@ -11,15 +8,14 @@ const webpackHot = require('webpack-hot-middleware')
 const webpackClient = require('./webpack.config.client.js')
 const webpackBase = require('./webpack.config.js')
 const mapValues = require('lodash/fp/mapValues')
-
 const http = require('http')
-const express = require('express')
 const path = require('path')
-const app = require('./server').default
+const appFactory = require('./server/http').default
 const socketio = require('./server/io').default
 const data = require('./server/data')
 
 const PORT = process.env.PORT || 3000
+const app = appFactory(data)
 const server = http.Server(app)
 
 const config = {
@@ -74,7 +70,6 @@ const options = {
 
 app.use(webpackDev(compiler, options))
 app.use(webpackHot(compiler))
-app.use('/static', express.static('public'))
 
 server.listen(PORT, function () {
   console.log('Listening to port ', PORT)
