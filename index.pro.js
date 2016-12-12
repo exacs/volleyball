@@ -5,7 +5,7 @@
  */
 import http from 'http'
 import express from 'express'
-import app from './server'
+import app from './server/http'
 import socketio from './server/io'
 import * as data from './server/data'
 
