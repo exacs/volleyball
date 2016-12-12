@@ -10,11 +10,23 @@ import { renderToString } from 'react-dom/server'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-import * as data from './data'
-
 import SpectatorRoot from '../app/SpectatorRoot'
 import RefereeRoot from '../app/RefereeRoot'
 import reducer from '../app/reducers'
+
+export default function (data) {
+  const app = express()
+
+  app.get('/', function (req, res) {
+    res.send(sendHTML(<SpectatorRoot />, 'index', data.getState()))
+  })
+
+  app.get('/referee', function (req, res) {
+    res.send(sendHTML(<RefereeRoot />, 'referee', data.getState()))
+  })
+
+  return app
+}
 
 function sendHTML (rootComponent, jsName, state) {
   const provider = (
@@ -45,14 +57,3 @@ function sendHTML (rootComponent, jsName, state) {
   `)
 }
 
-const app = express()
-
-app.get('/', function (req, res) {
-  res.send(sendHTML(<SpectatorRoot />, 'index', data.getState()))
-})
-
-app.get('/referee', function (req, res) {
-  res.send(sendHTML(<RefereeRoot />, 'referee', data.getState()))
-})
-
-export default app

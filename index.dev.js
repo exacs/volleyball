@@ -15,11 +15,12 @@ const mapValues = require('lodash/fp/mapValues')
 const http = require('http')
 const express = require('express')
 const path = require('path')
-const app = require('./server/http').default
+const appFactory = require('./server/http').default
 const socketio = require('./server/io').default
 const data = require('./server/data')
 
 const PORT = process.env.PORT || 3000
+const app = appFactory(data)
 const server = http.Server(app)
 
 const config = {

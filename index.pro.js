@@ -5,11 +5,12 @@
  */
 import http from 'http'
 import express from 'express'
-import app from './server/http'
+import appFactory from './server/http'
 import socketio from './server/io'
 import * as data from './server/data'
 
 const PORT = process.env.PORT || 3000
+const app = appFactory(data)
 const server = http.Server(app)
 
 app.use('/static', express.static('public'))
