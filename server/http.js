@@ -25,6 +25,8 @@ export default function (data) {
     res.send(sendHTML(<RefereeRoot />, 'referee', data.getState()))
   })
 
+  app.use('/static', express.static('../public'))
+
   return app
 }
 
