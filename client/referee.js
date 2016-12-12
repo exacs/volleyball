@@ -1,5 +1,5 @@
 /**
- * Entry point for Client-side JS file.
+ * Client-side JS for Referee
  */
 import './sass/referee.scss'
 import React from 'react'

@@ -1,9 +1,6 @@
 /**
  * Script to start the Server in Development mode.
- *
- * Do not use in Production
  */
-
 require('babel-register')
 const webpack = require('webpack')
 const webpackDev = require('webpack-dev-middleware')

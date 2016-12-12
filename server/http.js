@@ -1,8 +1,5 @@
 /**
- * Entry point for Back-end side JS file.
- *
- * Must export an instance of Express or a function to be passed to NodeJS http
- * module
+ * HTTP Server
  */
 import express from 'express'
 import React from 'react'
@@ -14,6 +11,11 @@ import SpectatorRoot from '../app/SpectatorRoot'
 import RefereeRoot from '../app/RefereeRoot'
 import reducer from '../app/reducers'
 
+/**
+ * Return an instance of Express HTTP Server.
+ *
+ * @param data   - Redux store of the server-side data
+ */
 export default function (data) {
   const app = express()
 

@@ -1,7 +1,5 @@
 /**
  * Script to build the Server in Production mode.
- *
- * Use this code as an entry point for module bundlers that accepts ES6
  */
 import http from 'http'
 import appFactory from './server/http'

@@ -1,5 +1,5 @@
 /**
- * Entry point for Client-side JS file.
+ * Client-side JS for Spectator
  */
 import './sass/index.scss'
 import React from 'react'
