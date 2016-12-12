@@ -14,20 +14,10 @@ import reducer from '../app/reducers'
 const store = createStore(reducer, window.__INITIAL_STATE__)
 
 const io = socketio()
-io.on('connect', function () {
-  console.log('client connect')
-})
 
 io.on('spectator_update', function (text) {
-  console.log('update for spectator', text)
   store.dispatch(text)
 })
-
-function sendMessage () {
-  io.emit('message', 'Hello from a client!')
-}
-
-setTimeout(sendMessage, 1000)
 
 ReactDOM.render(
   <Provider store={store}>
