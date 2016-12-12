@@ -95,18 +95,22 @@ Shows an event happened during the match.
 
 Props
 
-* `feature: ['home', 'away', null]`. The team who starred the event.
+* `feature: ['home', 'away']`. The team who starred the event.
 * `time: number`. Minutes from the beginning of the match to this event.
 * `points: { home: number, away: number }`. Points of each team after the event.
 * `undo?: () => void` (*optional*). A function to be called to undo this event.
-* `inverted: boolean`. True to show "away" info on the left and "home" on the right.
+* `inverse: boolean`. True to show "away" info on the left and "home" on the right.
 
 Rendered elements:
 
 * `.timeline-entry`. The root element
 * `.timeline-entry__node`. The central node with the minutes inside.
 * `.timeline-entry__label`. Each of the labels (1 in the left, 1 in the right of the node)
+* `.timeline-entry__label--home`. Home-side label.
+* `.timeline-entry__label--away`. Away-side label.
 * `.timeline-entry__label--left`. Left-side label.
 * `.timeline-entry__label--right`. Right-side label.
 * `.timeline-entry__label__title`. The title of each label.
 * `.timeline-entry__label__points`. The points of each label.
+* `.timeline-entry__label__icon`. The "chevron" mark next to the featured team.
+* `.timeline-entry__undo`. The "undo" button.
