@@ -1,6 +1,9 @@
+/**
+ * Redux Reducer
+ */
 import * as ActionTypes from '../actions'
 
-function reducer (state, action) {
+export default function (state, action) {
   if (state.winner !== null) return state
 
   switch (action.type) {
@@ -76,4 +79,3 @@ function undoReducer (state) {
   }
 }
 
-export default reducer
