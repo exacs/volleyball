@@ -33,6 +33,7 @@ render(
     name='local'
     shortName='L'
     points={6}
+    onPoint={() => {}}
     feature='home' />,
   document.getElementById('team-score')
 )
@@ -46,6 +47,10 @@ render(
     teams={{
       home: { name: 'home', shortName: 'L' },
       away: { name: 'away', shortName: 'V' }
+    }}
+    onPoint={{
+      home: () => {},
+      away: () => {}
     }} />,
   document.getElementById('scoreboard')
 )
