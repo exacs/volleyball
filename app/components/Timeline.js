@@ -45,7 +45,7 @@ Timeline.propTypes = {
     action: PropTypes.oneOf(['point']),
     feature: PropTypes.oneOf(['home', 'away'])
   })),
-  undo: PropTypes.func.isRequired,
+  undo: PropTypes.func,
   inverse: PropTypes.bool
 }
 

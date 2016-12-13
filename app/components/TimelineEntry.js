@@ -12,8 +12,8 @@ const TimelineEntry = ({ feature, time, points, undo, inverse }) => {
   )
 
   const undoButton = () => (undo && (
-    <button className='timeline-entry__undo' onClick={e => undo()}>
-      <i className='material-icons'>remove</i>
+    <button className='timeline-entry__undo btn btn-link' onClick={e => undo()}>
+      <i className='material-icons'>remove_circle</i>
     </button>
   ))
 
