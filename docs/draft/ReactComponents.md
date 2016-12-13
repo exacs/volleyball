@@ -105,6 +105,7 @@ Rendered elements:
 
 * `.timeline-entry`. The root element
 * `.timeline-entry__node`. The central node with the minutes inside.
+* `.timeline-entry__labels`. Labels container
 * `.timeline-entry__label`. Each of the labels (1 in the left, 1 in the right of the node)
 * `.timeline-entry__label--home`. Home-side label.
 * `.timeline-entry__label--away`. Away-side label.

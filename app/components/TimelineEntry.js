@@ -32,17 +32,19 @@ const TimelineEntry = ({ feature, time, points, undo, inverse }) => {
   return (
     <div className='timeline-entry'>
       <time className='timeline-entry__node'>{`${time}'`}</time>
-      <div className={cnHome}>
-        { feature === 'home' && undoButton() }
-        { feature === 'home' && icon(inverse ? 'right' : 'left') }
-        <header className='timeline-entry__label__title'>Home</header>
-        <main className='timeline-entry__label__points'>{ points.home }</main>
-      </div>
-      <div className={cnAway}>
-        { feature === 'away' && undoButton() }
-        { feature === 'away' && icon(inverse ? 'left' : 'right') }
-        <header className='timeline-entry__label__title'>Away</header>
-        <main className='timeline-entry__label__points'>{ points.away }</main>
+      <div className='timeline-entry__labels'>
+        <div className={cnHome}>
+          { feature === 'home' && undoButton() }
+          { feature === 'home' && icon(inverse ? 'right' : 'left') }
+          <header className='timeline-entry__label__title'>Home</header>
+          <main className='timeline-entry__label__points'>{ points.home }</main>
+        </div>
+        <div className={cnAway}>
+          { feature === 'away' && undoButton() }
+          { feature === 'away' && icon(inverse ? 'left' : 'right') }
+          <header className='timeline-entry__label__title'>Away</header>
+          <main className='timeline-entry__label__points'>{ points.away }</main>
+        </div>
       </div>
     </div>
   )
