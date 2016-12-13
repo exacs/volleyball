@@ -48,7 +48,7 @@ type Team : {
 * `shortName`. Short name of the team
 
 
-## `<TeamScore name shortName points home>`
+## `<TeamScore name shortName points feature>`
 
 Shows the score of a team in one single round.
 
@@ -57,18 +57,18 @@ Props:
 * `name: string`. The name of the team
 * `shortName: string`. The short name of the team.
 * `points: number`. The points achieved by the team in this round.
-* `home: boolean`. True if the team is the "home" team.
+* `feature: [ 'home' | 'away' ]`. Team of this
 
 Rendered elements:
 
 * `.team-score`. The root element.
 * `.team-score__team`. Information of the team.
-* `.team-score__team__title`. Title of the team (home or away).
-* `.team-score__team__avatar`. Avatar of the team.
-* `.team-score__team__avatar--home`. If the avatar is of the "home" team.
-* `.team-score__team__avatar--away`. If the avatar is of the "away" team.
-* `.team-score__team__abbr`. Short name of the team.
-* `.team-score__team__name`. Name of the team.
+* `.team-score__team-title`. Title of the team (home or away).
+* `.team-score__team-avatar`. Avatar of the team.
+* `.team-score__team-avatar--home`. If the avatar is of the "home" team.
+* `.team-score__team-avatar--away`. If the avatar is of the "away" team.
+* `.team-score__team-abbr`. Short name of the team.
+* `.team-score__team-name`. Name of the team.
 * `.team-score__team__points`. Points earned by the team.
 
 ## `<Timeline history, undo, inverted>`
