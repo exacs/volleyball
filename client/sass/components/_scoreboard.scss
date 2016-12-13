@@ -1,0 +1,78 @@
+.scoreboard {
+  padding: 16px 16px 48px;
+//  padding-bottom: 48px;
+  position: relative;
+  background: $gray-dark;
+  color: $gray-lightest;
+}
+
+.scoreboard__teams {
+  display: flex;
+}
+
+.scoreboard__team {
+  flex: 1;
+}
+
+.scoreboard__rounds {
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 16px;
+  left: 0;
+  bottom: 0;
+  transition: all .3s ease;
+  background: $gray-dark;
+  overflow: hidden;
+}
+
+.scoreboard__rounds--summary {
+  height: 32px;
+}
+
+.scoreboard__rounds--all {
+  height: 208px;
+}
+
+.scoreboard__rounds--all .scoreboard__title {
+  border: 0px;
+}
+
+.scoreboard__rounds__toggle {
+  position: absolute;
+  right: 16px;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+  top: 0;
+}
+
+.scoreboard__title {
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  border-top: 1px $gray-light solid;
+  padding: 8px 0;
+  margin: 0;
+}
+
+.scoreboard__table {
+  margin: 32px auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.scoreboard__table tr {
+  border-top: 1px $gray-light solid;
+  border-bottom: 1px $gray-light solid;
+}
+
+.scoreboard__table__team {
+  padding: 8px 16px;
+}
+
+.scoreboard__table__score {
+  text-align: center;
+  width: 48px;
+}

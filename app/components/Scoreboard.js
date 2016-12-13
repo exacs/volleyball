@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react'
 import classNames from 'classnames'
 import TeamScore from './TeamScore'
 
+/** <Scoreboard teams roudnds > */
 class Scoreboard extends React.Component {
   constructor (props) {
     super(props)
@@ -28,8 +29,8 @@ class Scoreboard extends React.Component {
 
     const row = (team, rounds) => (
       <tr>
-        <th>{team.name}</th>
-        { rounds.map(round => <td>{round}</td>)}
+        <th className='scoreboard__table__team'>{team.name}</th>
+        { rounds.map(round => <td className='scoreboard__table__score'>{round}</td>)}
       </tr>
     )
 
@@ -42,13 +43,19 @@ class Scoreboard extends React.Component {
       </table>
     )
 
+    const wonHome = this.props.rounds.filter(r => r.winner === 'home').length
+    const wonAway = this.props.rounds.filter(r => r.winner === 'away').length
+
     return (
       <div className='scoreboard'>
         <div className={cnRounds}>
+          <h2 className='scoreboard__title'>{wonHome} · SETS · {wonAway}</h2>
           <button
-            className='scoreboard__rounds__toggle'
+            className='scoreboard__rounds__toggle btn btn-link'
             onClick={() => this.handleToggle()}>
-            Toggle
+            <i className='material-icons'>
+              { !this.state.toggled ? 'expand_more' : 'expand_less' }
+            </i>
           </button>
           { table() }
         </div>
