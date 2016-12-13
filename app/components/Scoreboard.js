@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import classNames from 'classnames'
 import TeamScore from './TeamScore'
 
-/** <Scoreboard teams roudnds > */
+/** <Scoreboard teams rounds > */
 class Scoreboard extends React.Component {
   constructor (props) {
     super(props)
