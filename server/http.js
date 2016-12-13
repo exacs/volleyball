@@ -4,12 +4,10 @@
 import express from 'express'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 import SpectatorRoot from '../app/SpectatorRoot'
 import RefereeRoot from '../app/RefereeRoot'
-import reducer from '../app/reducers'
 
 /**
  * Return an instance of Express HTTP Server.
@@ -20,11 +18,11 @@ export default function (data) {
   const app = express()
 
   app.get('/', function (req, res) {
-    res.send(sendHTML(<SpectatorRoot />, 'index', data.getState()))
+    res.send(sendHTML(<SpectatorRoot />, 'index', data))
   })
 
   app.get('/referee', function (req, res) {
-    res.send(sendHTML(<RefereeRoot />, 'referee', data.getState()))
+    res.send(sendHTML(<RefereeRoot />, 'referee', data))
   })
 
   app.use('/static', express.static('public'))
@@ -32,9 +30,9 @@ export default function (data) {
   return app
 }
 
-function sendHTML (rootComponent, jsName, state) {
+function sendHTML (rootComponent, jsName, store) {
   const provider = (
-    <Provider store={createStore(reducer, state)}>
+    <Provider store={store}>
       {rootComponent}
     </Provider>
   )
@@ -54,7 +52,7 @@ function sendHTML (rootComponent, jsName, state) {
   </head>
   <body>
     <div id="root">${renderToString(provider)}</div>
-    <script>window.__INITIAL_STATE__ = ${JSON.stringify(state)}</script>
+    <script>window.__INITIAL_STATE__ = ${JSON.stringify(store.getState())}</script>
     <script src="/static/build/${jsName}.js"></script>
   </body>
 </html>
