@@ -1,6 +1,4 @@
-.timeline {}
-
-.timeline--list {
+.timeline__list {
   background: $gray-light;
   width: 2px;
   margin: 0 auto;
@@ -8,6 +6,6 @@
   list-style: none;
 }
 
-.timeline--item {
+.timeline__item {
   padding: 16px 0;
 }

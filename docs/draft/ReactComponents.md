@@ -79,7 +79,7 @@ Props:
 
 * `history: array<Action>`. The history of actions.
 * `undo?: () => void` (*optional*). A function to be called when "undo" button is clicked.
-* `inverted: boolean`. False if "home" team must be rendered in the left.
+* `inverse: boolean`. False if "home" team must be rendered in the left.
 
 The `undo` argument is optional. If none is given, then no "undo" button is shown.
 
