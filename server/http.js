@@ -4,12 +4,10 @@
 import express from 'express'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 import SpectatorRoot from '../app/SpectatorRoot'
 import RefereeRoot from '../app/RefereeRoot'
-import reducer from '../app/reducers'
 
 /**
  * Return an instance of Express HTTP Server.
