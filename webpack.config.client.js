@@ -11,7 +11,8 @@ module.exports = {
   context: path.join(__dirname, 'client'),
   entry: {
     index: './index',
-    referee: './referee'
+    referee: './referee',
+    showcase: './showcase'
   },
 
   output: {
