@@ -11,11 +11,16 @@ Props:
 
 Rendered elements:
 
-* `.scoreboard`. Root element
-* `.scoreboard__teams`. Both teams
+* `.scoreboard`. Root element.
+* `.scoreboard__rounds`. Table of all rounds.
+* `.scoreboard__rounds__toggle`. Button to toggle between views
+* `.scoreboard__rounds--summary`. Show only summary.
+* `.scoreboard__rounds--all`. Show all information.
+* `.scoreboard__table`. The table of results.
+* `.scoreboard__teams`. Both teams.
 * `.scoreboard__team`. Score of one team.
-* `.scoreboard__team--home`. If the team is "home"
-* `.scoreboard__team--away`. If the team is "away"
+* `.scoreboard__team--home`. If the team is "home".
+* `.scoreboard__team--away`. If the team is "away".
 
 ### type `Round`
 

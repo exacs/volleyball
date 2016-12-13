@@ -47,5 +47,7 @@ render(
       home: { name: 'home', shortName: 'L' },
       away: { name: 'away', shortName: 'V' }
     }} />,
-  document.getElementById('team-score')
+  document.getElementById('scoreboard')
 )
+
+module.hot.accept()
