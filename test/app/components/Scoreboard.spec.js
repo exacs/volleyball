@@ -5,18 +5,18 @@ import { shallow } from 'enzyme'
 
 import Scoreboard from 'components/Scoreboard'
 
-describe('<Scoreboard>', function () {
-  describe('untoggled', function () {
+describe('<Scoreboard', function () {
+  describe('onPoint=undefined> untoggled', function () {
     const wrapper = shallow(
       <Scoreboard
-      rounds={[
-        { home: 25, away: 21, winner: 'home' },
-        { home: 23, away: 24, winner: null }
-      ]}
-      teams={{
-        home: { name: 'home', shortName: 'L' },
-        away: { name: 'away', shortName: 'V' }
-      }} />
+        rounds={[
+          { home: 25, away: 21, winner: 'home' },
+          { home: 23, away: 24, winner: null }
+        ]}
+        teams={{
+          home: { name: 'home', shortName: 'L' },
+          away: { name: 'away', shortName: 'V' }
+        }} />
     )
 
     it('renders .scoreboard__rounds, .scoreboard__rounds__toggle', function () {
@@ -35,7 +35,7 @@ describe('<Scoreboard>', function () {
     })
   })
 
-  describe('toggled', function () {
+  describe('onPoint=undefined> toggled', function () {
     const wrapper = shallow(
       <Scoreboard
         rounds={[

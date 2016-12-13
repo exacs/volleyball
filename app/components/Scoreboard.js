@@ -65,6 +65,7 @@ class Scoreboard extends React.Component {
               feature='home'
               name={this.props.teams.home.name}
               shortName={this.props.teams.home.shortName}
+              onPoint={this.props.onPoint && this.props.onPoint.home}
               points={this.props.rounds[this.props.rounds.length - 1].home} />
           </div>
           <div className={cnAway}>
@@ -72,6 +73,7 @@ class Scoreboard extends React.Component {
               feature='away'
               name={this.props.teams.away.name}
               shortName={this.props.teams.away.shortName}
+              onPoint={this.props.onPoint && this.props.onPoint.away}
               points={this.props.rounds[this.props.rounds.length - 1].away} />
           </div>
         </div>
@@ -93,6 +95,10 @@ Scoreboard.propTypes = {
   teams: PropTypes.shape({
     home: PropTypes.shape(teamShape),
     away: PropTypes.shape(teamShape)
+  }),
+  onPoint: PropTypes.shape({
+    home: PropTypes.func,
+    away: PropTypes.func
   })
 }
 

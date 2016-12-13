@@ -37,7 +37,7 @@ TeamScore.propTypes = {
   name: PropTypes.string.isRequired,
   points: PropTypes.number.isRequired,
   feature: PropTypes.oneOf(['home', 'away']),
-  onPoint: PropTypes.function
+  onPoint: PropTypes.func
 }
 
 export default TeamScore
