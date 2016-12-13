@@ -53,7 +53,7 @@ type Team : {
 * `shortName`. Short name of the team
 
 
-## `<TeamScore name shortName points feature>`
+## `<TeamScore name shortName points feature onPoint>`
 
 Shows the score of a team in one single round.
 
@@ -63,6 +63,7 @@ Props:
 * `shortName: string`. The short name of the team.
 * `points: number`. The points achieved by the team in this round.
 * `feature: [ 'home' | 'away' ]`. Team of this
+* `onPoint?: () => void` (*optional*). A function to call when "+" is pressed.
 
 Rendered elements:
 
@@ -75,6 +76,7 @@ Rendered elements:
 * `.team-score__team-abbr`. Short name of the team.
 * `.team-score__team-name`. Name of the team.
 * `.team-score__team__points`. Points earned by the team.
+* `.team-score__button`. The "+" button.
 
 ## `<Timeline history, undo, inverted>`
 
