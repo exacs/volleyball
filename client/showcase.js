@@ -9,6 +9,8 @@ import TimelineEntry from '../app/components/TimelineEntry'
 import Timeline from '../app/components/Timeline'
 import TeamScore from '../app/components/TeamScore'
 import Scoreboard from '../app/components/Scoreboard'
+import { Spectator } from '../app/containers/Spectator'
+import { Referee } from '../app/containers/Referee'
 
 render(
   <TimelineEntry
@@ -53,6 +55,33 @@ render(
       away: () => {}
     }} />,
   document.getElementById('scoreboard')
+)
+
+render(
+  <Spectator
+    rounds={[
+      { home: 25, away: 25, winner: null }
+    ]}
+    history={[
+      { time: 0, action: 'point', feature: 'home' }
+    ]} />,
+  document.getElementById('spectator')
+)
+
+render(
+  <Referee
+    rounds={[
+      { home: 25, away: 25, winner: null }
+    ]}
+    history={[
+      { time: 0, action: 'point', feature: 'home' }
+    ]}
+    onPoint={{
+      home: () => {},
+      away: () => {}
+    }}
+    onUndo={() => {}} />,
+  document.getElementById('referee')
 )
 
 module.hot.accept()
