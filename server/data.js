@@ -8,14 +8,11 @@ import reducer from '../app/reducers'
 
 const match = {
   winner: null,
-  rounds: {
+  rounds: [{
     home: 0,
-    away: 0
-  },
-  points: {
-    home: 0,
-    away: 0
-  },
+    away: 0,
+    winner: null
+  }],
   history: []
 }
 
