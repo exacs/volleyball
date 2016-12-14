@@ -12,13 +12,18 @@ import socketio from 'socket.io'
 export default (app, store) => {
   const io = socketio(app)
 
+  // Receive messages from referee
   io.on('connection', function (socket) {
     console.log('connection')
 
     socket.on('referee_update', function (text) {
       console.log('referee_update', text)
       store.dispatch(text)
-      io.emit('spectator_update', text)
     })
+  })
+
+  // Send messages to spectators
+  store.subscribe(() => {
+    io.emit('spectator_update', store.getState())
   })
 }
