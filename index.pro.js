@@ -4,7 +4,7 @@
 import http from 'http'
 import appFactory from './server/http'
 import socketio from './server/io'
-import * as data from './server/data'
+import data from './server/data'
 
 const PORT = process.env.PORT || 3000
 const app = appFactory(data)
