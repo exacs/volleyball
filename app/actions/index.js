@@ -6,7 +6,7 @@ import { emitUndo, emitPoint } from './io'
 /* Synchronous actions */
 export const POINT = 'point'
 export const UNDO = 'undo'
-export const UPDATE_STATE = 'update_state'
+export const UPDATE_MATCH = 'update_state'
 
 export const point = (feature, time) => ({
   type: POINT,
@@ -18,8 +18,8 @@ export const undo = () => ({
   type: UNDO
 })
 
-export const updateState = (newState) => ({
-  type: UPDATE_STATE,
+export const updateMatch = (newState) => ({
+  type: UPDATE_MATCH,
   newState
 })
 

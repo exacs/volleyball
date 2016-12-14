@@ -36,11 +36,10 @@ export class Referee extends React.Component {
 }
 
 Referee.propTypes = {
-  round: PropTypes.number.isRequired,
-  points: PropTypes.shape({
+  rounds: PropTypes.arrayOf(PropTypes.shape({
     home: PropTypes.number.isRequired,
     away: PropTypes.number.isRequired
-  }),
+  })),
   onPoint: PropTypes.shape({
     home: PropTypes.func,
     away: PropTypes.func
@@ -58,7 +57,7 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const mapStateToProps = (state) => ({
-  points: state.points,
+  rounds: state.rounds,
   history: state.history
 })
 
