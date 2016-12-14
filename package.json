@@ -21,6 +21,7 @@
     "test:client": "NODE_PATH=$NODE_PATH:client NODE_ENV=test mocha --require babel-register --recursive test/client",
     "test:server": "NODE_PATH=$NODE_PATH:server NODE_ENV=test mocha --require babel-register --recursive test/server",
     "test:app": "NODE_PATH=$NODE_PATH:app NODE_ENV=test mocha --require babel-register --recursive test/app",
+    "test:app-file": "NODE_PATH=$NODE_PATH:app NODE_ENV=test mocha --require babel-register",
     "lint": "eslint app server client",
     "postinstall": "npm run build",
     "ci:cov": "nyc report --reporter=text-lcov | coveralls"
@@ -44,6 +45,7 @@
   "devDependencies": {
     "babel-register": "^6.18.0",
     "chai": "^3.5.0",
+    "deep-freeze": "0.0.1",
     "eslint": "^3.10.2",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.3.2",
