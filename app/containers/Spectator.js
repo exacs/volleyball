@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+
 import Scoreboard from '../components/Scoreboard'
 import Timeline from '../components/Timeline'
 
@@ -37,3 +39,11 @@ Spectator.propTypes = {
     feature: PropTypes.oneOf(['home', 'away'])
   }))
 }
+
+/* React-Redux */
+const mapStateToProps = state => ({
+  rounds: state.rounds,
+  history: state.history
+})
+
+export default connect(mapStateToProps)(Spectator)
