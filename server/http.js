@@ -6,8 +6,8 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
 
-import SpectatorRoot from '../app/SpectatorRoot'
-import RefereeRoot from '../app/RefereeRoot'
+import Spectator from '../app/containers/Spectator'
+import Referee from '../app/containers/Referee'
 
 /**
  * Return an instance of Express HTTP Server.
@@ -18,11 +18,11 @@ export default function (data) {
   const app = express()
 
   app.get('/', function (req, res) {
-    res.send(sendHTML(<SpectatorRoot />, 'index', data))
+    res.send(sendHTML(<Spectator />, 'index', data))
   })
 
   app.get('/referee', function (req, res) {
-    res.send(sendHTML(<RefereeRoot />, 'referee', data))
+    res.send(sendHTML(<Referee />, 'referee', data))
   })
 
   app.use('/static', express.static('public'))
