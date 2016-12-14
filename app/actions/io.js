@@ -6,12 +6,12 @@
 import { POINT, UNDO } from './index'
 import { EMIT_IO } from '../middleware/io'
 
-export const emitPoint = (feature, time) => ({
+export const emitPoint = (feature) => ({
   [EMIT_IO]: {
     event: 'referee_update',
     data: {
       type: POINT,
-      time,
+      time: 0,
       feature
     }
   }
