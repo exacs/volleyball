@@ -12,7 +12,7 @@ const http = require('http')
 const path = require('path')
 const appFactory = require('./server/http').default
 const socketio = require('./server/io').default
-const data = require('./server/data')
+const data = require('./server/data').default
 
 const PORT = process.env.PORT || 3000
 const app = appFactory(data)
