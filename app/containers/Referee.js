@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
 
 import Scoreboard from '../components/Scoreboard'
 import Timeline from '../components/Timeline'
+import { emitPoint, emitUndo } from '../../app/actions'
 
 /**
  * <Referee round points incrementHome incrementAway history undo>
@@ -45,3 +47,19 @@ Referee.propTypes = {
   }),
   onUndo: PropTypes.func.isRequired
 }
+
+/** React-Redux */
+const mapDispatchToProps = (dispatch) => ({
+  onPoint: {
+    home: () => dispatch(emitPoint('home')),
+    away: () => dispatch(emitPoint('away'))
+  },
+  onUndo: () => dispatch(emitUndo())
+})
+
+const mapStateToProps = (state) => ({
+  points: state.points,
+  history: state.history
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Referee)
