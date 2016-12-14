@@ -1,13 +1,13 @@
-.timeline {}
-
-.timeline--list {
-  background: $gray-light;
-  width: 2px;
+.timeline__list {
+  background: $gray-lighter;
+  width: 4px;
   margin: 0 auto;
   padding: 0;
   list-style: none;
 }
 
-.timeline--item {
+.timeline__item {
   padding: 16px 0;
+  width: 320px;
+  margin-left: -158px;
 }

@@ -1,7 +1,58 @@
 import React, { PropTypes } from 'react'
 import TimelineEntry from './TimelineEntry'
 
-function eventsToStates (events) {
+/**
+ * <Timeline history undo inverse>
+ */
+const Timeline = ({history, undo, inverse = false}) => {
+  const states = calculatePoints(history).reverse()
+  const first = states[0]
+
+  const firstItem = () => (first &&
+    <li className='timeline__item'>
+      <TimelineEntry
+        undo={undo}
+        time={first.time}
+        points={first.points}
+        feature={first.feature}
+        inverse={inverse} />
+    </li>
+  )
+
+  const item = state => (
+    <li className='timeline__item'>
+      <TimelineEntry
+        time={state.time}
+        points={state.points}
+        home={state.home}
+        inverse={inverse} />
+    </li>
+  )
+
+  return (
+    <div className='timeline'>
+      <ul className='timeline__list'>
+        { firstItem() }
+        { states.slice(1).map(item) }
+      </ul>
+    </div>
+  )
+}
+
+Timeline.propTypes = {
+  history: PropTypes.arrayOf(PropTypes.shape({
+    time: PropTypes.number,
+    action: PropTypes.oneOf(['point']),
+    feature: PropTypes.oneOf(['home', 'away'])
+  })),
+  undo: PropTypes.func,
+  inverse: PropTypes.bool
+}
+
+export default Timeline
+
+/** Return an array of actions (event + home/away result after that event) */
+function calculatePoints (events) {
   const states = []
   const acc = {home: 0, away: 0}
 
@@ -15,44 +66,8 @@ function eventsToStates (events) {
         home: acc.home,
         away: acc.away
       },
-      home: event.feature === 'home'
+      feature: event.feature
     })
   })
   return states
 }
-
-const Item = ({item, undo, inverted}) => (
-  <li className='timeline--item'>
-    <TimelineEntry
-      undo={undo}
-      time={item.time}
-      points={item.points}
-      home={item.home}
-      inverted={inverted} />
-  </li>
-)
-
-const UndoableTimeline = ({history, undo, inverted = false}) => {
-  const states = eventsToStates(history).reverse()
-  const first = states[0]
-
-  return (
-    <div className='timeline'>
-      <ul className='timeline--list'>
-        { first && <Item item={first} undo={undo} inverted={inverted} /> }
-        { states.slice(1).map(state => <Item item={state} inverted={inverted} />) }
-      </ul>
-    </div>
-  )
-}
-UndoableTimeline.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.shape({
-    time: PropTypes.number,
-    action: PropTypes.oneOf(['point']),
-    feature: PropTypes.oneOf(['home', 'away'])
-  })),
-  undo: PropTypes.func,
-  inverted: PropTypes.bool
-}
-
-export default UndoableTimeline

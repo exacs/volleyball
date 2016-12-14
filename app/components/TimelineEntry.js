@@ -1,48 +1,65 @@
 import React, { PropTypes } from 'react'
+import classNames from 'classnames'
 
-const Undo = ({undo}) => (
-  <i
-    onClick={e => undo()}
-    className='material-icons'>remove_circle</i>
-)
+/**
+ * <TimelineEntry home time points undo inverse>
+ */
+const TimelineEntry = ({ feature, time, points, undo, inverse }) => {
+  const icon = (side) => (
+    <i className='material-icons timeline-entry__label__icon'>
+      { side === 'left' ? 'chevron_right' : 'chevron_left' }
+    </i>
+  )
 
-const ArrowIcon = ({home}) => (
-  <i className='material-icons'>
-    { home ? 'keyboard_arrow_right' : 'keyboard_arrow_left' }
-  </i>
-)
+  const undoButton = () => (undo && (
+    <button className='timeline-entry__undo btn btn-link' onClick={e => undo()}>
+      <i className='material-icons'>remove_circle</i>
+    </button>
+  ))
 
-const UndoableTimelineEntry = ({home = false, time, points, undo, inverted = false}) => (
-  <div className='timeline-entry'>
-    <time className='timeline-entry--node'>
-      <span className='timeline-entry--time'>{ 'X\'' }</span>
-    </time>
+  // Classname for timeline-entry__label--home
+  const cnHome = classNames('timeline-entry__label', 'timeline-entry__label--home', {
+    'timeline-entry__label--left': !inverse,
+    'timeline-entry__label--right': inverse
+  })
 
-    <div className={`timeline-entry--label timeline-entry--label__${!inverted ? 'home' : 'away'}`}>
-      { undo && home && <Undo undo={undo} /> }
-      { home && <ArrowIcon home={true} /> }
-      <header className='timeline-entry--title'>Home</header>
-      <main className='timeline-entry--points'>{ points.home }</main>
+  // Classname for timeline-entry__label--away
+  const cnAway = classNames('timeline-entry__label', 'timeline-entry__label--away', {
+    'timeline-entry__label--left': inverse,
+    'timeline-entry__label--right': !inverse
+  })
+
+  return (
+    <div className='timeline-entry'>
+      <time className='timeline-entry__node'>{`${time}'`}</time>
+      <div className='timeline-entry__labels'>
+        <div className={cnHome}>
+          { feature === 'home' && undoButton() }
+          { feature === 'home' && icon(inverse ? 'right' : 'left') }
+          <header className='timeline-entry__label__title'>Home</header>
+          <main className='timeline-entry__label__points'>{ points.home }</main>
+        </div>
+        <div className={cnAway}>
+          { feature === 'away' && undoButton() }
+          { feature === 'away' && icon(inverse ? 'left' : 'right') }
+          <header className='timeline-entry__label__title'>Away</header>
+          <main className='timeline-entry__label__points'>{ points.away }</main>
+        </div>
+      </div>
     </div>
+  )
+}
 
-    <div className={`timeline-entry--label timeline-entry--label__${!inverted ? 'away' : 'home'}`}>
-      { undo && !home && <Undo undo={undo} /> }
-      { !home && <ArrowIcon home={false} /> }
-      <header className='timeline-entry--title'>Away</header>
-      <main className='timeline-entry--points'>{ points.away }</main>
-    </div>
-  </div>
-)
-
-UndoableTimelineEntry.propTypes = {
-  home: PropTypes.bool,
+TimelineEntry.propTypes = {
+  feature: PropTypes.oneOf(['home', 'away']),
   time: PropTypes.number.isRequired,
   points: PropTypes.shape({
     home: PropTypes.number.isRequired,
     away: PropTypes.number.isRequired
   }),
   undo: PropTypes.func,
-  inverted: PropTypes.bool
+  inverse: PropTypes.bool
 }
 
-export default UndoableTimelineEntry
+export default TimelineEntry
+

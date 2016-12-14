@@ -8,7 +8,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import socketio from 'socket.io-client'
 
-import RefereeRoot from '../app/RefereeRoot'
+import Referee from '../app/containers/Referee'
 import reducer from '../app/reducers'
 import ioMiddleware from '../app/middleware/io'
 
@@ -21,7 +21,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <RefereeRoot />
+    <Referee />
   </Provider>,
   document.getElementById('root')
 )

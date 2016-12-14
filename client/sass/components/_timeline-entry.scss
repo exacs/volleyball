@@ -1,48 +1,56 @@
 .timeline-entry {
   position: relative;
-}
-
-.timeline-entry--node {
   display: flex;
-  width: 40px;
-  height: 40px;
-  transform: translateX(-20px);
   align-items: center;
+  justify-content: center;
+}
+
+.timeline-entry__node {
+  margin: 8px 0;
+  padding: 4px 0;
+  width: 40px;
+  height: 32px;
   text-align: center;
-  border: 2px $gray-light solid;
-  border-radius: 50%;
-  background: #FFF;
-}
-
-.timeline-entry--time {
+  background: $gray-lighter;
   font-size: $font-size-sm;
-  width: 100%;
+  color: $gray;
 }
 
-.timeline-entry--label {
+.timeline-entry__labels {
+  position: absolute;
+  width: 0px;
+  top: 0;
+  height: 48px;
+}
+
+.timeline-entry__label {
   height: 32px;
   position: absolute;
-  top: 4px;
+  top: 8px;
   display: flex;
   align-items: center;
-
-  &__home {
-    right: 32px;
-    flex-direction: row;
-  }
-
-  &__away {
-    left: 32px;
-    flex-direction: row-reverse;
-  }
 }
 
+.timeline-entry__label--left {
+  right: 48px;
+  flex-direction: row;
+}
 
+.timeline-entry__label--right {
+  left: 48px;
+  flex-direction: row-reverse;
+}
 
-.timeline-entry--title {
+.timeline-entry__label__title {
   display: none;
 }
 
-.timeline-entry--points {
+.timeline-entry__label__points {
   width: 100%;
+}
+
+.timeline-entry__undo {
+  width: 32px;
+  height: 32px;
+  padding: 4px;
 }
