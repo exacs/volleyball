@@ -2,17 +2,25 @@
 
 ```
 state = {
+  match
+}
+```
+
+# match object.
+
+```
+match = {
   winner: [ 'home' | 'away' | null ],
   points: array<Round>,
   history: array<HistoryEntry>
 }
 ```
 
-## `state.winner : [ 'home' | 'away' | null ]`
+## `match.winner : [ 'home' | 'away' | null ]`
 
 The winner of the match. Can have three values: `'home'`, `'away'` or `null`. A `null` value means that the match has not ended yet.
 
-## `state.points : array<Round>`
+## `match.points : array<Round>`
 
 Represents the points earned by each team in every round (set). Is an array of `Round` objects representing the result of each round. The first element of the array is the first round and so on.
 
@@ -28,7 +36,7 @@ Round : {
 
 Where `home` and `away` are the points achieved by each team in the set and `winner` is the winner of the set (`null` means that the round has not finished yet).
 
-## `state.history : array<HistoryEntry>`
+## `match.history : array<HistoryEntry>`
 
 Represents every relevant action recorded of the match. Is an array of `HistoryEntry` objects sorted chronologically (first element is the oldest action). Relevant action includes:
 

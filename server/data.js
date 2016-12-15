@@ -6,14 +6,16 @@
 import { createStore } from 'redux'
 import reducer from '../app/reducers'
 
-const match = {
-  winner: null,
-  rounds: [{
-    home: 0,
-    away: 0,
-    winner: null
-  }],
-  history: []
+const state = {
+  score: {
+    winner: null,
+    rounds: [{
+      home: 0,
+      away: 0,
+      winner: null
+    }],
+    history: []
+  }
 }
 
-export default createStore(reducer, match)
+export default createStore(reducer, state)
