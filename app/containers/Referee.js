@@ -57,8 +57,8 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const mapStateToProps = (state) => ({
-  rounds: state.rounds,
-  history: state.history
+  rounds: state.score.rounds,
+  history: state.score.history
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Referee)
