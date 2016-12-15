@@ -7,6 +7,7 @@ import { emitUndo, emitPoint } from './io'
 export const POINT = 'point'
 export const UNDO = 'undo'
 export const UPDATE_MATCH = 'update_state'
+export const START_TIMEOUT = 'start_timeout'
 
 export const point = (feature, time) => ({
   type: POINT,
@@ -21,6 +22,11 @@ export const undo = () => ({
 export const updateMatch = (newState) => ({
   type: UPDATE_MATCH,
   newState
+})
+
+export const startTimeout = feature => ({
+  type: START_TIMEOUT,
+  feature
 })
 
 /* IO related actions */

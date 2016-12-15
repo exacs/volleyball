@@ -15,6 +15,10 @@ const state = {
       winner: null
     }],
     history: []
+  },
+  timeouts: {
+    home: 2,
+    away: 2
   }
 }
 
